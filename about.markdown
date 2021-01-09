@@ -2,17 +2,13 @@
 layout: page
 title: About
 permalink: /about/
+author: Hichame El Khalfi
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
+Hichame El Khalfi is an Engineering Manager at Deloitte Digital.
 
-You can find the source code for Minima at GitHub:
-[jekyll][jekyll-organization] /
-[minima](https://github.com/jekyll/minima)
+ In this role, he leads a team of engineers to build, run and scale the organization’s AI Decisioning capabilities.
 
-You can find the source code for Jekyll at GitHub:
-[jekyll][jekyll-organization] /
-[jekyll](https://github.com/jekyll/jekyll)
+Prior to joining Deloitte Digital in 2018, Hichame worked at Magnetic (acquired by Deloitte in 2018) and several international financial firms.
 
-
-[jekyll-organization]: https://github.com/jekyll
+Hichame holds a Master of Science in Distributed Systems Engineering and a Master of Business Informatic from Université Paris-Est Créteil.
