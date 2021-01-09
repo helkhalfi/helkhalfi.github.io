@@ -18,7 +18,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Hichame El Khalfi
+title: Hichame's Blog
 description: >
   From Keyboard To Beyond.
 
@@ -27,6 +27,9 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: helkhalfi
 github_username:  helkhalfi
 linkedin_username: elkhalfihichame
+
+# Analytics
+google_analytics: G-FHF6J2NFKJ
 
 # Build settings
 theme: minima
