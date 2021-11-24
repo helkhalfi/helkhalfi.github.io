@@ -28,4 +28,4 @@ jobs:
         run: npm install broken-link-checker -g
 
       - name: Find Broken links
-        run: blc ./public -ro
+        run: blc public -ro
