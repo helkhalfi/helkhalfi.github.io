@@ -1,4 +1,4 @@
-ame: github pages
+name: Lint check
 
 on:
   push:
