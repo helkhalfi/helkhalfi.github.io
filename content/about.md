@@ -12,8 +12,8 @@ Hichame focuses on building and scaling reliable, automated and self-healing pip
 
 Prior to joining Deloitte Digital in 2018, Hichame worked at [Magnetic](https://www.magnetic.com)
 (AI driven ad-tech company acquired by [Deloitte Digital](https://www.deloittedigital.com))
-as well as financial firms including [Societe Generale CIB](https://americas.societegenerale.com/en/solutions-for-our-clients/corporate-investment-banking/)
+as well as financial firms including [Sociéte Générale CIB](https://americas.societegenerale.com/en/solutions-for-our-clients/corporate-investment-banking/)
 ,[Natixis](https://www.natixis.com), [La Banque Postale](https://www.labanquepostale.fr.
 
 Hichame holds a Master of Science in Distributed Systems Engineering and a Master in Business Informatics
-both from Université Paris-Est Créteil.
+both from [Université Paris-Est Créteil](https://www.u-pec.fr).
