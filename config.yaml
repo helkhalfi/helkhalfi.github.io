@@ -7,7 +7,7 @@ defaultContentLanguage: en
 
 hasCJKLanguage: false
 permalinks:
-  posts: /posts/:title/
+  posts: /posts/:year/:month/:title/
 
 googleAnalytics: UA-186953293-1
 disqusShortname: your-disqus-shortname
@@ -39,7 +39,7 @@ params:
   # Author biography
   bio: Software Engineer
   # Site Description, used in HTML meat
-  description: My Blog
+  description: Tech Medley Blog
 
   ###########################################
   # Optional Configuration
