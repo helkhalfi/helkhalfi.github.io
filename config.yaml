@@ -1,4 +1,4 @@
-baseURL: 
+baseURL:
 languageCode: en-us
 title: Tech Medley
 theme: mini
@@ -9,7 +9,7 @@ hasCJKLanguage: false
 permalinks:
   posts: /posts/:title/
 
-googleAnalytics: your-google-analytics-id
+googleAnalytics: UA-186953293-1
 disqusShortname: your-disqus-shortname
 
 # Hugo Configure Markup
@@ -40,7 +40,6 @@ params:
   bio: Software Engineer
   # Site Description, used in HTML meat
   description: My Blog
-
 
   ###########################################
   # Optional Configuration
