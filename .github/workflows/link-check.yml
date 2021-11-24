@@ -1,4 +1,4 @@
-name: github pages
+ame: github pages
 
 on:
   push:
@@ -24,9 +24,8 @@ jobs:
       - name: Build
         run: hugo --minify
 
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        if: github.ref == 'refs/heads/main'
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
+      - name: Install broken-link-checker
+        run: npm install broken-link-checker -g
+
+      - name: Find Broken links
+        run: blc ./public -ro
