@@ -1,4 +1,4 @@
-name: github pages
+name: Dalily Link Checker
 
 on:
   schedule:
