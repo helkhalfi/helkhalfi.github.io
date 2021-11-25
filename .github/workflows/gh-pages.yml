@@ -21,6 +21,11 @@ jobs:
           hugo-version: 'latest'
           # extended: true
 
+      - name: Markup Link Checker for ./content
+        uses: becheran/mlc@v0.14.3
+        with:
+          args: ./content
+
       - name: Build
         run: hugo --minify
 
