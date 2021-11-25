@@ -8,7 +8,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
         with:
@@ -20,6 +20,11 @@ jobs:
         with:
           hugo-version: 'latest'
           # extended: true
+
+      - name: Markup Link Checker for ./content
+        uses: becheran/mlc@v0.14.3
+        with:
+          args: ./content
 
       - name: Build
         run: hugo --minify
