@@ -16,4 +16,4 @@ as well as financial firms including [Sociéte Générale CIB](https://americas.
 ,[Natixis](https://www.natixis.com), [La Banque Postale](https://www.labanquepostale.fr).
 
 Hichame holds a Master of Science in Distributed Systems Engineering and a Master in Business Informatics
-both from [Université Paris-Est Créteil](https://www.u-pec.frrrr).
+both from [Université Paris-Est Créteil](https://www.u-pec.fr).
