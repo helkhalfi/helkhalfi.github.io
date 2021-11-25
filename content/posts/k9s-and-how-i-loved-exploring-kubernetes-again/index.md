@@ -9,7 +9,7 @@ I use kubenetes regularly, and most of the time I cannot remember what command
 to run let say to open shell into a container or to list the current containers and so.
 `kubectl` command is very powerful but also very very verbose :)
 
-[k9s](https://k9scli.ioi) is the perfect tool for me as it make these command super easy to run the following (and much more) with
+[k9s](https://k9scli.io) is the perfect tool for me as it make these command super easy to run the following (and much more) with
 one keystoke:
 
 1. Open a shell in a container.
