@@ -27,4 +27,4 @@ jobs:
       - name: Markup Link Checker (mlc)
         uses: becheran/mlc@v0.14.3
         with:
-          args: ./public
+          args: ./content ./public/index.html
