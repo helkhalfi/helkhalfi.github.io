@@ -28,8 +28,3 @@ jobs:
         uses: becheran/mlc@v0.14.3
         with:
           args: ./content
-
-      - name: Markup Link Checker ./public/index.html
-        uses: becheran/mlc@v0.14.3
-        with:
-          args: ./public/index.html
