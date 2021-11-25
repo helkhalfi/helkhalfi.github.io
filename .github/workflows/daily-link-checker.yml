@@ -6,7 +6,7 @@ on:
     - cron:  '5 4 * * *'
 
 jobs:
-  deploy:
+  checker:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
