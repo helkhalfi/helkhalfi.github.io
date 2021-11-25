@@ -22,7 +22,7 @@ jobs:
           # extended: true
 
       - name: Build
-        run: nohup hugo server -D
+        run: nohup hugo server -D &
 
       - name: Install broken-link-checker
         run: npm install broken-link-checker -g
