@@ -24,7 +24,12 @@ jobs:
       - name: Build
         run: hugo --minify
 
-      - name: Markup Link Checker (mlc)
+      - name: Markup Link Checker for ./content
         uses: becheran/mlc@v0.14.3
         with:
-          args: ./content ./public/index.html
+          args: ./content
+
+      - name: Markup Link Checker ./public/index.html
+        uses: becheran/mlc@v0.14.3
+        with:
+          args: ./public/index.html
