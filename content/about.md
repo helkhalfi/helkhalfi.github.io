@@ -1,8 +1,8 @@
----
-title: "About Me"
-date: 2021-10-01T20:11:09-05:00
-draft: false
----
++++
+title = 'About Me'
+date = 2021-10-01T20:11:09-05:00
+draft = true
++++
 Hichame El Khalfi is a Software Engineer (and Manager) at [Hux](https://www.deloittedigital.com/us/en/offerings/customer-led-marketing/advertising--marketing-and-commerce/hux.html) by [Deloitte Digital](https://www.deloittedigital.com).
 
 In this role, he leads the Data Engineering Team that supports building,

@@ -1,9 +1,9 @@
----
-title: "K9s and how I love exploring kubernetes again"
-date: 2021-11-08T21:11:09-05:00
-tags: ["k9s", "k8s", "kubernetes", "kubectl", "eks", "aws", "infrastructure"]
-draft: false
----
++++
+title = 'K9s and How I Loved Exploring Kubernetes Again'
+date = 2021-11-08T21:11:09-05:00
+draft = true
+tags = ["k9s", "k8s", "kubernetes", "kubectl", "eks", "aws", "infrastructure"]
++++
 
 I use kubenetes regularly, and most of the time I cannot remember what command
 to run let say to open shell into a container or to list the current containers and so.
