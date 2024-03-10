@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <title>K9s and How I Loved Exploring Kubernetes Again | Tech Medley</title>
+
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">    
+<meta name="viewport" content="width=device-width,minimum-scale=1">
+<meta name="description" content="I use kubenetes regularly, and most of the time I cannot remember what command to run let say to open shell into a container or to list the current containers and so. kubectl command is very powerful but also very very verbose :)
+k9s is the perfect tool for me as it make these command super easy to run the following (and much more) with one keystoke:
+Open a shell in a container.">
+<meta name="generator" content="Hugo 0.123.8">
+
+
+  <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+
+
+
+
+
+
+
+
+  </head>
+
+  <body>
+    <nav class="navigation">
+	
+		<a href="/"> <span class="arrow">←</span>Home</a>
+	
+	<a href="/posts">Archive</a>
+	<a href="/tags">Tags</a>
+	<a href="/about">About</a>
+
+	
+
+	
+</nav>
+
+
+    <main class="main">
+      
+
+<section id="single">
+    <h1 class="title">K9s and How I Loved Exploring Kubernetes Again</h1>
+
+    <div class="tip">
+        <time datetime="2021-11-08 21:11:09 -0500 EST">Nov 8, 2021</time>
+        <span class="split">
+          ·
+        </span>
+        <span>
+          272 words
+        </span>
+        <span class="split">
+          ·
+        </span>
+        <span>
+          2 minute read
+        </span>
+    </div>
+
+    
+    
+
+
+    <div class="content">
+      <p>I use kubenetes regularly, and most of the time I cannot remember what command
+to run let say to open shell into a container or to list the current containers and so.
+<code>kubectl</code> command is very powerful but also very very verbose :)</p>
+<p><a href="https://k9scli.io" target="_blank" rel="noopener">k9s</a> is the perfect tool for me as it make these command super easy to run the following (and much more) with
+one keystoke:</p>
+<ol>
+<li>Open a shell in a container.</li>
+<li>Show the logs of a container.</li>
+<li>where can you find all the shortcut.</li>
+<li>&hellip;</li>
+</ol>
+<h2 id="install-k9s">Install k9s <a href="#install-k9s" class="anchor">🔗</a></h2><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># via homebrew</span>
+</span></span><span style="display:flex;"><span>brew install derailed/k9s/k9s
+</span></span></code></pre></div><p>Linux and Windows are supported, check k9s <a href="https://k9scli.io/topics/install/" target="_blank" rel="noopener">installation page</a>
+for what needs to be done</p>
+<h2 id="configure-your-kubernetes-context-kubeconfig">Configure your kubernetes context (kubeconfig) <a href="#configure-your-kubernetes-context-kubeconfig" class="anchor">🔗</a></h2><p>In order to connect to you kubernetes cluster, you will need a kubeconfig file that most of the time will
+live in <code>~/.kube/config</code>.</p>
+<p>As an AWS user, I&rsquo;m going to use aws cli to create this file for me.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>aws eks --region &lt;region-code&gt; update-kubeconfig --name &lt;cluster_name&gt;
+</span></span></code></pre></div><p>For more info, check <a href="https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html" target="_blank" rel="noopener">AWS guide to create kubeconfig</a></p>
+<h2 id="run-k9s">Run k9s <a href="#run-k9s" class="anchor">🔗</a></h2><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># run k9s from the command line</span>
+</span></span><span style="display:flex;"><span>k9s
+</span></span></code></pre></div><p>You should see k9s ui.
+<p class="markdown-image">
+  <img src="main.png" alt="main menu"  title="ui" />
+</p></p>
+<h2 id="how-to-open-a-shell-inside-a-container">How to open a shell inside a container <a href="#how-to-open-a-shell-inside-a-container" class="anchor">🔗</a></h2><p>Once you select your running container, hit <code>s</code> button and Voila!
+<p class="markdown-image">
+  <img src="shell.png" alt="open a shell"  title="Shelling inside a container" />
+</p></p>
+<h2 id="list-of-shortcuts">List of shortcuts <a href="#list-of-shortcuts" class="anchor">🔗</a></h2><ul>
+<li>Shell: <code>s</code></li>
+<li>Logs: <code>l</code></li>
+<li>Describe: <code>d</code></li>
+<li>Attach: <code>a</code></li>
+<li>Delete: <code>ctrl-d</code></li>
+<li>Edit: <code>e</code></li>
+<li>Help: <code>?</code></li>
+<li>Kill: <code>ctrl-k</code></li>
+<li>Logs previous: <code>p</code></li>
+<li>Port-Forward: <code>shift-f</code></li>
+<li>Show PortForward: <code>f</code></li>
+<li>YAML: <code>y</code></li>
+</ul>
+<p>These commands can change in the future, there are available on the top left of the ui in case you need them :)
+<p class="markdown-image">
+  <img src="shortcuts.png" alt="List of shortcuts"  title="list of shortcuts" />
+</p></p>
+<p>To get the complete list of shortcuts, hit <code>?</code> to go into the help section
+<p class="markdown-image">
+  <img src="help.png" alt="help"  title="exhaustive list of what you can do" />
+</p></p>
+
+    </div>
+
+    
+        <div class="tags">
+            
+                <a href="//localhost:1313/tags/k9s">k9s</a>
+            
+                <a href="//localhost:1313/tags/k8s">k8s</a>
+            
+                <a href="//localhost:1313/tags/kubernetes">kubernetes</a>
+            
+                <a href="//localhost:1313/tags/kubectl">kubectl</a>
+            
+                <a href="//localhost:1313/tags/eks">eks</a>
+            
+                <a href="//localhost:1313/tags/aws">aws</a>
+            
+                <a href="//localhost:1313/tags/infrastructure">infrastructure</a>
+            
+        </div>
+    
+    
+    
+
+</section>
+
+
+    </main>
+    
+    <footer id="footer">
+    
+
+    <div class="copyright">
+    
+       © Copyright 
+       2024 
+       <span class="split">
+        <svg fill="#bbbbbb" width="15" height="15" version="1.1" id="heart-15" xmlns="http://www.w3.org/2000/svg" width="15px" height="15px" viewBox="0 0 15 15">
+  <path d="M13.91,6.75c-1.17,2.25-4.3,5.31-6.07,6.94c-0.1903,0.1718-0.4797,0.1718-0.67,0C5.39,12.06,2.26,9,1.09,6.75&#xA;&#x9;C-1.48,1.8,5-1.5,7.5,3.45C10-1.5,16.48,1.8,13.91,6.75z"/>
+</svg>
+       </span>
+       
+    
+    </div>
+
+    
+      <div class="powerby">
+        Powered by <a href='http://www.gohugo.io/'>Hugo</a> Theme By <a href='https://github.com/nodejh/hugo-theme-mini'>nodejh</a>
+      </div>
+    
+</footer>
+
+
+
+  </body>
+</html>
