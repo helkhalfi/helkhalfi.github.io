@@ -2,6 +2,7 @@ languageCode = 'en-us'
 title = 'Tech Medley'
 theme = 'mini'
 defaultContentLanguage = 'en'
+enableEmoji = true
 
 [permalinks]
   [permalinks.page]
