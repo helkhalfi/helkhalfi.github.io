@@ -71,4 +71,3 @@ These commands can change in the future, there are available on the top left of 
 
 To get the complete list of shortcuts, hit `?` to go into the help section
 ![help](help.png "exhaustive list of what you can do")
-yes
