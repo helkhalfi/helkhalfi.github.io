@@ -6,6 +6,56 @@
     <description>Recent content in Tags on Tech Medley</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Mon, 08 Nov 2021 21:11:09 -0500</lastBuildDate>
     <atom:link href="//localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Aws</title>
+      <link>//localhost:1313/tags/aws/</link>
+      <pubDate>Mon, 08 Nov 2021 21:11:09 -0500</pubDate>
+      <guid>//localhost:1313/tags/aws/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Eks</title>
+      <link>//localhost:1313/tags/eks/</link>
+      <pubDate>Mon, 08 Nov 2021 21:11:09 -0500</pubDate>
+      <guid>//localhost:1313/tags/eks/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Infrastructure</title>
+      <link>//localhost:1313/tags/infrastructure/</link>
+      <pubDate>Mon, 08 Nov 2021 21:11:09 -0500</pubDate>
+      <guid>//localhost:1313/tags/infrastructure/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>K8s</title>
+      <link>//localhost:1313/tags/k8s/</link>
+      <pubDate>Mon, 08 Nov 2021 21:11:09 -0500</pubDate>
+      <guid>//localhost:1313/tags/k8s/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>K9s</title>
+      <link>//localhost:1313/tags/k9s/</link>
+      <pubDate>Mon, 08 Nov 2021 21:11:09 -0500</pubDate>
+      <guid>//localhost:1313/tags/k9s/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Kubectl</title>
+      <link>//localhost:1313/tags/kubectl/</link>
+      <pubDate>Mon, 08 Nov 2021 21:11:09 -0500</pubDate>
+      <guid>//localhost:1313/tags/kubectl/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Kubernetes</title>
+      <link>//localhost:1313/tags/kubernetes/</link>
+      <pubDate>Mon, 08 Nov 2021 21:11:09 -0500</pubDate>
+      <guid>//localhost:1313/tags/kubernetes/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>

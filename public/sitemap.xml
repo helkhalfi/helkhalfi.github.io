@@ -2,14 +2,42 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>//localhost:1313/tags/aws/</loc>
+    <lastmod>2021-11-08T21:11:09-05:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/tags/eks/</loc>
+    <lastmod>2021-11-08T21:11:09-05:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/tags/infrastructure/</loc>
+    <lastmod>2021-11-08T21:11:09-05:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/tags/k8s/</loc>
+    <lastmod>2021-11-08T21:11:09-05:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/tags/k9s/</loc>
+    <lastmod>2021-11-08T21:11:09-05:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/posts/2021/11/08/k9s-and-how-i-loved-exploring-kubernetes-again/</loc>
+    <lastmod>2021-11-08T21:11:09-05:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/tags/kubectl/</loc>
+    <lastmod>2021-11-08T21:11:09-05:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/tags/kubernetes/</loc>
+    <lastmod>2021-11-08T21:11:09-05:00</lastmod>
+  </url><url>
     <loc>//localhost:1313/posts/</loc>
+    <lastmod>2021-11-08T21:11:09-05:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/tags/</loc>
     <lastmod>2021-11-08T21:11:09-05:00</lastmod>
   </url><url>
     <loc>//localhost:1313/</loc>
     <lastmod>2021-11-08T21:11:09-05:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/categories/</loc>
+    <loc>//localhost:1313/about/</loc>
+    <lastmod>2021-10-01T20:11:09-05:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/tags/</loc>
+    <loc>//localhost:1313/categories/</loc>
   </url>
 </urlset>

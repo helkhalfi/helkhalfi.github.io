@@ -1,7 +1,7 @@
 +++
 title = 'K9s and How I Loved Exploring Kubernetes Again'
 date = 2021-11-08T21:11:09-05:00
-draft = true
+draft = false
 tags = ["k9s", "k8s", "kubernetes", "kubectl", "eks", "aws", "infrastructure"]
 +++
 
