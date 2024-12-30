@@ -1,11 +1,10 @@
-+++
-title = 'K9s and How I Loved Exploring Kubernetes Again'
-date = 2021-11-08T21:11:09-05:00
-draft = false
-tags = ["k9s", "k8s", "kubernetes", "kubectl", "eks", "aws", "infrastructure"]
-+++
+Title: K9s and How I Loved Exploring Kubernetes Again
+Date: 2021-11-08 21:11
+Status: published
+Tags: k9s, k8s, kubernetes, kubectl, eks, aws, infrastructure
 
-I use kubenetes regularly, and most of the time I cannot remember what command
+
+I  kubenetes regularly, and most of the time I cannot remember what command
 to run let say to open shell into a container or to list the current containers and so.
 `kubectl` command is very powerful but also very very verbose :)
 
@@ -30,6 +29,7 @@ In order to connect to you kubernetes cluster, you will need a kubeconfig file t
 live in `~/.kube/config`.
 
 As an AWS user, I'm going to use aws cli to create this file for me.
+
 ```shell
 aws eks --region <region-code> update-kubeconfig --name <cluster_name>
 ```
@@ -38,16 +38,16 @@ For more info, check [AWS guide to create kubeconfig](https://docs.aws.amazon.co
 )
 
 ## Run k9s
- ```shell
+```shell
 # run k9s from the command line
 k9s
 ```
 You should see k9s ui.
-![main menu](main.png "ui")
+![main menu]({static}./main.png "ui")
 
 ## How to open a shell inside a container
 Once you select your running container, hit `s` button and Voila!
-![open a shell](shell.png "Shelling inside a container")
+![open a shell]({static}./shell.png "Shelling inside a container")
 
 
 ## List of shortcuts
@@ -67,7 +67,7 @@ Once you select your running container, hit `s` button and Voila!
 
 
 These commands can change in the future, there are available on the top left of the ui in case you need them :)
-![List of shortcuts](shortcuts.png "list of shortcuts")
+![List of shortcuts]({static}./shortcuts.png "list of shortcuts")
 
 To get the complete list of shortcuts, hit `?` to go into the help section
-![help](help.png "exhaustive list of what you can do")
+![help]({static}./help.png "exhaustive list of what you can do")
