@@ -1,4 +1,5 @@
-Title: About Me!
+Title: About
+Slug: about
 Date: 2025-02-03
 Date: 2025-02-03
 Status: published

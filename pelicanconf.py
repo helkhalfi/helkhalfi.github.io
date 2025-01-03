@@ -15,12 +15,15 @@ TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
+GITHUB_URL = "http://github.com/helkhalfi/"
+THEME = "Flex"
+
 # Blogroll
 LINKS = (
-    ("Pelican", "https://getpelican.com/"),
-    ("Python.org", "https://www.python.org/"),
-    ("Jinja2", "https://palletsprojects.com/p/jinja/"),
-    ("You can modify those links in your config file", "#"),
+#    ("Pelican", "https://getpelican.com/"),
+#    ("Python.org", "https://www.python.org/"),
+#    ("Jinja2", "https://palletsprojects.com/p/jinja/"),
+#    ("You can modify those links in your config file", "#"),
 )
 
 # Social widget
