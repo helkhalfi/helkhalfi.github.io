@@ -5,6 +5,7 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
+    "ghp-import==2.1.0",
     "invoke==2.2.0",
     "livereload==2.7.1",
     "pelican-deadlinks",
