@@ -69,7 +69,7 @@ MENUITEMS = (
 # RELATIVE_URLS = True
 
 # Deadlinks plugin configurarion
-DEADLINKS_VALIDATION = False
+DEADLINKS_VALIDATION = True
 DEADLINKS_OPTIONS = {
     "archive": True,
     "classes": ["custom-class1", "disabled"],
@@ -78,8 +78,12 @@ DEADLINKS_OPTIONS = {
     "timeout_is_error": True,
 }
 
+
 # SEO Plugin
 SEO_REPORT = True  # SEO report is enabled by default
 SEO_ENHANCER = False  # SEO enhancer is disabled by default
 SEO_ENHANCER_OPEN_GRAPH = False # Subfeature of SEO enhancer
 SEO_ENHANCER_TWITTER_CARDS = False # Subfeature of SEO enhancer
+
+# Typographically checks and transformations
+TYPOGRIFY = True

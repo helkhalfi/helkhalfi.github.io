@@ -13,4 +13,4 @@ Prior to joining Deloitte in 2018, Hichame was a Senior Data Engineer at [Magnet
 as well as Senior Software Engineer roles across multiple financial firms including [Sociéte Générale CIB](https://americas.societegenerale.com/en/solutions-for-our-clients/corporate-investment-banking/), [Natixis](https://natixis.groupebpce.com) and [La Banque Postale](https://www.labanquepostale.fr).
 
 Hichame holds a Master of Science in Distributed Systems Engineering and a Master in Business Informatics
-both from [Université Paris-Est Créteil](https://www.u-pec.fr).
+both from [Université Paris-Est Créteil](https://www.u-pec.fr). 
