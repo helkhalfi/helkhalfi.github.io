@@ -29,7 +29,19 @@ SOCIAL = (
     ("Github", "https://github.com/helkhalfi"),
 )
 
+PLUGINS = [
+    'pelican.plugins.minify',
+]
+
 DEFAULT_PAGINATION = 10
+
+
+# "pelican.plugins.minify" section
+CSS_MIN = True
+JS_MIN = True
+HTML_MIN = True
+INLINE_CSS_MIN = True
+INLINE_JS_MIN = True
 
 # Uncomment following line if you want document-relative URLs when developing
 # RELATIVE_URLS = True

@@ -52,6 +52,7 @@ dependencies = [
     { name = "invoke" },
     { name = "livereload" },
     { name = "pelican", extra = ["markdown"] },
+    { name = "pelican-minify" },
 ]
 
 [package.metadata]
@@ -59,6 +60,7 @@ requires-dist = [
     { name = "invoke", specifier = "==2.2.0" },
     { name = "livereload", specifier = "==2.7.1" },
     { name = "pelican", extras = ["markdown"], specifier = "==4.10.2" },
+    { name = "pelican-minify", specifier = ">=2.0.0" },
 ]
 
 [[package]]
@@ -162,6 +164,12 @@ wheels = [
 ]
 
 [[package]]
+name = "minify-html"
+version = "0.15.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/0b/8a/c921cd4b3e364c871be418c1694b315e5fa823eb8180d89f99d9a61aa8fe/minify_html-0.15.0.tar.gz", hash = "sha256:cf4c36b6f9af3b0901bd2a0a29db3b09c0cdf0c38d3dde28e6835bce0f605d37", size = 96948 }
+
+[[package]]
 name = "ordered-set"
 version = "4.1.0"
 source = { registry = "https://pypi.org/simple" }
@@ -195,6 +203,19 @@ wheels = [
 [package.optional-dependencies]
 markdown = [
     { name = "markdown" },
+]
+
+[[package]]
+name = "pelican-minify"
+version = "2.0.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "minify-html" },
+    { name = "pelican" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/c6/f1/451947740435feadb51e957c30cf4d4fa0c543571c23a9203f6406b99529/pelican_minify-2.0.0.tar.gz", hash = "sha256:50a1e33a5f2acb8ce8a8c2e4223327745d7d61fe90f6c4a6dfe726bea9f1d503", size = 9566 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/58/ce/f16ad38ec4467de4dbf80c225e0f9afc3cf09216b33e65bee524d554cac6/pelican_minify-2.0.0-py3-none-any.whl", hash = "sha256:49359d91f18c289dced9b47ebea828c12ad53154e80f880b186056b13410d392", size = 6217 },
 ]
 
 [[package]]

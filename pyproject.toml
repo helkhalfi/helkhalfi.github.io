@@ -7,5 +7,6 @@ requires-python = ">=3.13"
 dependencies = [
     "invoke==2.2.0",
     "livereload==2.7.1",
+    "pelican-minify>=2.0.0",
     "pelican[markdown]==4.10.2",
 ]
