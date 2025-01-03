@@ -1,7 +1,10 @@
 Title: uv - THE extremely fast Python package installer and resolver !
 Date: 2025-02-03
+Date: 2025-02-03
 Status: published
 Tags: uv, python, venv, rust, pelican, site
+Author: Hichame El Khalfi
+
 
 Did any of you Pythonista folks use any python project without using a virtual-environment, then installing (and maintinaing) versions of your external library :) ?
 I do not ... and I always found installing (downloading) new libraries slow.

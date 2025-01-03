@@ -35,6 +35,7 @@ PLUGINS = [
 
 DEFAULT_PAGINATION = 10
 
+DISPLAY_PAGES_ON_MENU = True
 
 # "pelican.plugins.minify" section
 CSS_MIN = True
