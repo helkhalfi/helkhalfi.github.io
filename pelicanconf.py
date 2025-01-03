@@ -1,6 +1,8 @@
+from datetime import datetime
+
 AUTHOR = 'Hichame El Khalfi'
 SITENAME = 'Software Engineering Medley'
-SITEURL = ""
+SITEURL = 'http://localhost:8000'
 
 PATH = "content"
 
@@ -34,8 +36,12 @@ SOCIAL = (
 
 PLUGINS = [
     'pelican.plugins.minify',
+    'pelican.plugins.deadlinks',
+    'pelican.plugins.seo'
 ]
 
+
+COPYRIGHT_YEAR = datetime.now().year
 DEFAULT_PAGINATION = 10
 
 DISPLAY_PAGES_ON_MENU = True
@@ -56,8 +62,24 @@ MAIN_MENU = True
 MENUITEMS = (
     ("Archives", "/archives.html"),
     ("Categories", "/categories.html"),
-    ("Tags", "/tags.html"),
+    ("Tags", "/tags.html")
 )
 
 # Uncomment following line if you want document-relative URLs when developing
 # RELATIVE_URLS = True
+
+# Deadlinks plugin configurarion
+DEADLINKS_VALIDATION = False
+DEADLINKS_OPTIONS = {
+    "archive": True,
+    "classes": ["custom-class1", "disabled"],
+    "labels": True,
+    "timeout_duration_ms": 1000,
+    "timeout_is_error": True,
+}
+
+# SEO Plugin
+SEO_REPORT = True  # SEO report is enabled by default
+SEO_ENHANCER = False  # SEO enhancer is disabled by default
+SEO_ENHANCER_OPEN_GRAPH = False # Subfeature of SEO enhancer
+SEO_ENHANCER_TWITTER_CARDS = False # Subfeature of SEO enhancer

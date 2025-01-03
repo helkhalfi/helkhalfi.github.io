@@ -1,6 +1,5 @@
 Title: Talks
 Date: 2025-02-03
-Date: 2025-02-03
 Status: published
 Author: Hichame El Khalfi
 

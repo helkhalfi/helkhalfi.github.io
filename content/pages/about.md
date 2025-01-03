@@ -1,10 +1,8 @@
 Title: About
-Slug: about
-Date: 2025-02-03
+Slug: About
 Date: 2025-02-03
 Status: published
 Author: Hichame El Khalfi
-
 
 Hichame El Khalfi is VP of Engineering ( and a software engineer by :heart: ) at [Converge Consumer By Deloitte](https://www2.deloitte.com/us/en/industries/consumer-industry.html?icid=top_consumer-industry).
 
