@@ -1,5 +1,6 @@
 Title: uv - THE extremely fast Python package installer and resolver !
-Date: 2025-02-03
+Date: 2025-01-03
+Modified: 2025-01-04
 Status: published
 Tags: uv, python, venv, rust, pelican, site, pip, pip-compile, virtual-env
 Author: Hichame El Khalfi
@@ -10,6 +11,59 @@ Did any of you Pythonista folks use any python project without using a virtual-e
 I do not ... and I always found installing (downloading) new libraries slow and cumbersome.
 
 This article will show you how to use [uv](https://docs.astral.sh/uv/) to make this very very fast and very easy ... and the learning curve is inexistant.
+
+# How fast it is ?
+Let's test it by using the same `requirement.txt` file and disabling using the cache to force download and installating 
+
+## using uv
+It took 0.52 seconds to resolve, download and install the packages listed in the requirements.txt
+```bash
+time uv pip -n install -r requirements.txt 
+Resolved 23 packages in 168ms
+Prepared 23 packages in 305ms
+Installed 23 packages in 29ms
+ + anyio==4.7.0
+ + blinker==1.9.0
+ + docutils==0.21.2
+ + feedgenerator==2.1.0
+ + idna==3.10
+ + invoke==2.2.0
+ + jinja2==3.1.5
+ + livereload==2.7.1
+ + markdown==3.7
+ + markdown-it-py==3.0.0
+ + markupsafe==3.0.2
+ + mdurl==0.1.2
+ + ordered-set==4.1.0
+ + pelican==4.10.2
+ + pygments==2.18.0
+ + python-dateutil==2.9.0.post0
+ + pytz==2024.2
+ + rich==13.9.4
+ + six==1.17.0
+ + sniffio==1.3.1
+ + tornado==6.4.2
+ + unidecode==1.3.8
+ + watchfiles==1.0.3
+uv pip -n install -r requirements.txt  0.52s user 0.42s system 144% cpu 0.652 total```
+```
+## using pip
+It took 6.8s when using standerd pip
+
+
+```bash
+time pip install --no-cache-dir -r requirements.txt
+... more printing content ...
+Collecting anyio==4.7.0 (from -r requirements.txt (line 3))
+Downloading tornado-6.4.2-cp38-abi3-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (437 kB)
+Downloading Unidecode-1.3.8-py3-none-any.whl (235 kB)
+Downloading watchfiles-1.0.3-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (442 kB)
+Installing collected packages: pytz, unidecode, tornado, sniffio, six, pygments, ordered-set, mdurl, markupsafe, markdown, invoke, idna, feedgenerator, docutils, blinker, python-dateutil, markdown-it-py, livereload, jinja2, anyio, watchfiles, rich, pelican
+Successfully installed anyio-4.7.0 blinker-1.9.0 docutils-0.21.2 feedgenerator-2.1.0 idna-3.10 invoke-2.2.0 jinja2-3.1.5 livereload-2.7.1 markdown-3.7 markdown-it-py-3.0.0 markupsafe-3.0.2 mdurl-0.1.2 ordered-set-4.1.0 pelican-4.10.2 pygments-2.18.0 python-dateutil-2.9.0.post0 pytz-2024.2 rich-13.9.4 six-1.17.0 sniffio-1.3.1 tornado-6.4.2 unidecode-1.3.8 watchfiles-1.0.3
+pip install --no-cache-dir -r requirements.txt  6.87s user 0.54s system 80% cpu 9.154 total
+```
+
+Using uv we got 13x speed up !
 
 # Goal.
 Create a python project using [uv](https://docs.astral.sh/uv/), add dependencies and test that dependencies are installed.
