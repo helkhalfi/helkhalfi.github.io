@@ -37,7 +37,7 @@ SOCIAL = (
 PLUGINS = [
     'pelican.plugins.minify',
     'pelican.plugins.deadlinks',
-    'pelican.plugins.seo'
+    #'pelican.plugins.seo'
 ]
 
 

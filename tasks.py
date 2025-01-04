@@ -150,6 +150,7 @@ def gh_pages(c):
     c.run(
         "ghp-import -b {github_pages_branch} "
         "-m {commit_message} "
+        "-o "
         "{deploy_path} -p".format(**CONFIG)
     )
 
