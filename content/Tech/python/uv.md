@@ -6,14 +6,14 @@ Tags: uv, python, venv, rust, pelican, site, pip, pip-compile, virtual-env
 Author: Hichame El Khalfi
 
 
-Did any of you Pythonista folks use any python project without using a virtual-environment, then installing (and maintinaing) versions of your external library :) ?
+Did any of you Pythonista folks use any python project without using a virtual-environment, then installing (and maintaining) versions of your external library :) ?
 
 I do not ... and I always found installing (downloading) new libraries slow and cumbersome.
 
-This article will show you how to use [uv](https://docs.astral.sh/uv/) to make this very very fast and very easy ... and the learning curve is inexistant.
+This article will show you how to use [uv](https://docs.astral.sh/uv/) to make this very very fast and very easy ... and the learning curve is inexistent.
 
 # How fast it is ?
-Let's test it by using the same `requirement.txt` file and disabling using the cache to force download and installating 
+Let's test it by using the same `requirement.txt` file and disabling using the cache to force download and installing 
 
 ## using uv
 It took 0.52 seconds to resolve, download and install the packages listed in the requirements.txt
@@ -48,7 +48,7 @@ Installed 23 packages in 29ms
 uv pip -n install -r requirements.txt  0.52s user 0.42s system 144% cpu 0.652 total```
 ```
 ## using pip
-It took 6.8s when using standerd pip
+It took 6.8s when using standard pip
 
 
 ```bash
@@ -71,7 +71,7 @@ Create a python project using [uv](https://docs.astral.sh/uv/), add dependencies
 The toy project will be a static site generated using [Pelican](https://getpelican.com/) which is a static site generator powered by Python!
 
 # Install uv.
-The compelete installation methis can be found at [here](https://docs.astral.sh/uv/getting-started/installation/)
+The complete installation can be found at [here](https://docs.astral.sh/uv/getting-started/installation/)
 ```bash
 brew install uv
 ```
@@ -83,29 +83,29 @@ cd project
 ```
 
 # Install Dependencies.
-We will install dependecies needed to create, build, generate a site maintained by [Pelican](https://getpelican.com/).
+We will install dependencies needed to create, build, generate a site maintained by [Pelican](https://getpelican.com/).
 ```bash
 uv add "pelican[markdown]==4.10.2" "invoke==2.2.0" "livereload==2.7.1" 
 ```
 
 uv will create automatically:
 
-1. Python virtual enviroment under ".venv" folder.
-1. Pyhton configuration file aka "pyproject.toml"
-1. Download and install dependencies (and dependencies of dependencies) and update "pyroject.toml" for you.
+1. Python virtual environment under ".venv" folder.
+1. Python configuration file aka "pyproject.toml"
+1. Download and install dependencies (and dependencies of dependencies) and update "pyproject.toml" for you.
 
 
-# Test that depencies are properly installed.
+# Test that dependencies are properly installed.
 ```bash
 uv run python -c "import pelican; print(pelican.__version__)" 
 >> 4.10.2
 ```
 
 # Run live reload of the site.
-we will use one liner instad of activating a virtual-env then running `invoke`
+we will use one liner instead of activating a virtual-env then running `invoke`
 
 ```bash
-# Prefered: one liner option
+# Preferred: one liner option
 uv run invoke livereload
 
 # Cumbersome: multi line that works as well :)
@@ -126,7 +126,7 @@ livereload==2.7.1
 ```
 
 ```bash
-# Create a virual environme
+# Create a virtual environment
 uv venv .venv
 
 # Activate virtual environment

@@ -87,3 +87,9 @@ SEO_ENHANCER_TWITTER_CARDS = False # Subfeature of SEO enhancer
 
 # Typographically checks and transformations
 TYPOGRIFY = True
+
+
+ARTICLE_URL = 'posts/{date:%Y}/{date:%m}/{date:%d}/{slug}/'
+ARTICLE_SAVE_AS = 'posts/{date:%Y}/{date:%m}/{date:%d}/{slug}/index.html'
+PAGE_URL = 'pages/{slug}/'
+PAGE_SAVE_AS = 'pages/{slug}/index.html'
