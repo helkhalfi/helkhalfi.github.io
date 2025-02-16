@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Software Engineering Medley</title><link href="/" rel="alternate"></link><link href="/feeds/all.atom.xml" rel="self"></link><id>/</id><updated>2025-01-04T00:00:00-05:00</updated><entry><title>uv - THE extremely fast Python package installer and resolver !</title><link href="/posts/2025/01/03/uv-the-extremely-fast-python-package-installer-and-resolver/" rel="alternate"></link><published>2025-01-03T00:00:00-05:00</published><updated>2025-01-04T00:00:00-05:00</updated><author><name>Hichame El Khalfi</name></author><id>tag:None,2025-01-03:/posts/2025/01/03/uv-the-extremely-fast-python-package-installer-and-resolver/</id><summary type="html">&lt;p&gt;Did any of you Pythonista folks use any python project without using a virtual-environment, then installing (and maintaining) versions of your external library :) ?&lt;/p&gt;
+&lt;p&gt;I do not … and I always found installing (downloading) new libraries slow and cumbersome.&lt;/p&gt;
+&lt;p&gt;This article will show you how to use &lt;a href="https://docs.astral.sh/uv/"&gt;uv&lt;/a&gt; to make this very …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Did any of you Pythonista folks use any python project without using a virtual-environment, then installing (and maintaining) versions of your external library :) ?&lt;/p&gt;
+&lt;p&gt;I do not … and I always found installing (downloading) new libraries slow and cumbersome.&lt;/p&gt;
+&lt;p&gt;This article will show you how to use &lt;a href="https://docs.astral.sh/uv/"&gt;uv&lt;/a&gt; to make this very very fast and very easy … and the learning curve is inexistent.&lt;/p&gt;
+&lt;h1&gt;How fast it is ?&lt;/h1&gt;
+&lt;p&gt;Let’s test it by using the same &lt;code&gt;requirement.txt&lt;/code&gt; file and disabling using the cache to force download and installing &lt;/p&gt;
+&lt;h2&gt;using uv&lt;/h2&gt;
+&lt;p&gt;It took 0.52 seconds to resolve, download and install the packages listed in the requirements.txt&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nb"&gt;time&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;uv&lt;span class="w"&gt; &lt;/span&gt;pip&lt;span class="w"&gt; &lt;/span&gt;-n&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;-r&lt;span class="w"&gt; &lt;/span&gt;requirements.txt&lt;span class="w"&gt; &lt;/span&gt;
+Resolved&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;23&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;packages&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;in&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;168ms
+Prepared&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;23&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;packages&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;in&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;305ms
+Installed&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;23&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;packages&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;in&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;29ms
+&lt;span class="w"&gt; &lt;/span&gt;+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;anyio&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="m"&gt;4&lt;/span&gt;.7.0
+&lt;span class="w"&gt; &lt;/span&gt;+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;blinker&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;.9.0
+&lt;span class="w"&gt; &lt;/span&gt;+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;docutils&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;.21.2
+&lt;span class="w"&gt; &lt;/span&gt;+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;feedgenerator&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;.1.0
+&lt;span class="w"&gt; &lt;/span&gt;+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;idna&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;.10
+&lt;span class="w"&gt; &lt;/span&gt;+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;invoke&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;.2.0
+&lt;span class="w"&gt; &lt;/span&gt;+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;jinja2&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;.1.5
+&lt;span class="w"&gt; &lt;/span&gt;+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;livereload&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;.7.1
+&lt;span class="w"&gt; &lt;/span&gt;+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;markdown&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;.7
+&lt;span class="w"&gt; &lt;/span&gt;+&lt;span class="w"&gt; &lt;/span&gt;markdown-it-py&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;.0.0
+&lt;span class="w"&gt; &lt;/span&gt;+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;markupsafe&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;.0.2
+&lt;span class="w"&gt; &lt;/span&gt;+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;mdurl&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;.1.2
+&lt;span class="w"&gt; &lt;/span&gt;+&lt;span class="w"&gt; &lt;/span&gt;ordered-set&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="m"&gt;4&lt;/span&gt;.1.0
+&lt;span class="w"&gt; &lt;/span&gt;+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;pelican&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="m"&gt;4&lt;/span&gt;.10.2
+&lt;span class="w"&gt; &lt;/span&gt;+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;pygments&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;.18.0
+&lt;span class="w"&gt; &lt;/span&gt;+&lt;span class="w"&gt; &lt;/span&gt;python-dateutil&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;.9.0.post0
+&lt;span class="w"&gt; &lt;/span&gt;+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;pytz&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="m"&gt;2024&lt;/span&gt;.2
+&lt;span class="w"&gt; &lt;/span&gt;+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;rich&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="m"&gt;13&lt;/span&gt;.9.4
+&lt;span class="w"&gt; &lt;/span&gt;+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;six&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;.17.0
+&lt;span class="w"&gt; &lt;/span&gt;+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;sniffio&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;.3.1
+&lt;span class="w"&gt; &lt;/span&gt;+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;tornado&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="m"&gt;6&lt;/span&gt;.4.2
+&lt;span class="w"&gt; &lt;/span&gt;+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;unidecode&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;.3.8
+&lt;span class="w"&gt; &lt;/span&gt;+&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;watchfiles&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;.0.3
+uv&lt;span class="w"&gt; &lt;/span&gt;pip&lt;span class="w"&gt; &lt;/span&gt;-n&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;-r&lt;span class="w"&gt; &lt;/span&gt;requirements.txt&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;.52s&lt;span class="w"&gt; &lt;/span&gt;user&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;.42s&lt;span class="w"&gt; &lt;/span&gt;system&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;144&lt;/span&gt;%&lt;span class="w"&gt; &lt;/span&gt;cpu&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;.652&lt;span class="w"&gt; &lt;/span&gt;total&lt;span class="sb"&gt;```&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;using pip&lt;/h2&gt;
+&lt;p&gt;It took 6.8s when using standard pip&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nb"&gt;time&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;pip&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;--no-cache-dir&lt;span class="w"&gt; &lt;/span&gt;-r&lt;span class="w"&gt; &lt;/span&gt;requirements.txt
+...&lt;span class="w"&gt; &lt;/span&gt;more&lt;span class="w"&gt; &lt;/span&gt;printing&lt;span class="w"&gt; &lt;/span&gt;content&lt;span class="w"&gt; &lt;/span&gt;...
+Collecting&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nv"&gt;anyio&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="m"&gt;4&lt;/span&gt;.7.0&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;from&lt;span class="w"&gt; &lt;/span&gt;-r&lt;span class="w"&gt; &lt;/span&gt;requirements.txt&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;line&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="o"&gt;))&lt;/span&gt;
+Downloading&lt;span class="w"&gt; &lt;/span&gt;tornado-6.4.2-cp38-abi3-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;437&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;kB&lt;span class="o"&gt;)&lt;/span&gt;
+Downloading&lt;span class="w"&gt; &lt;/span&gt;Unidecode-1.3.8-py3-none-any.whl&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;235&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;kB&lt;span class="o"&gt;)&lt;/span&gt;
+Downloading&lt;span class="w"&gt; &lt;/span&gt;watchfiles-1.0.3-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;442&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;kB&lt;span class="o"&gt;)&lt;/span&gt;
+Installing&lt;span class="w"&gt; &lt;/span&gt;collected&lt;span class="w"&gt; &lt;/span&gt;packages:&lt;span class="w"&gt; &lt;/span&gt;pytz,&lt;span class="w"&gt; &lt;/span&gt;unidecode,&lt;span class="w"&gt; &lt;/span&gt;tornado,&lt;span class="w"&gt; &lt;/span&gt;sniffio,&lt;span class="w"&gt; &lt;/span&gt;six,&lt;span class="w"&gt; &lt;/span&gt;pygments,&lt;span class="w"&gt; &lt;/span&gt;ordered-set,&lt;span class="w"&gt; &lt;/span&gt;mdurl,&lt;span class="w"&gt; &lt;/span&gt;markupsafe,&lt;span class="w"&gt; &lt;/span&gt;markdown,&lt;span class="w"&gt; &lt;/span&gt;invoke,&lt;span class="w"&gt; &lt;/span&gt;idna,&lt;span class="w"&gt; &lt;/span&gt;feedgenerator,&lt;span class="w"&gt; &lt;/span&gt;docutils,&lt;span class="w"&gt; &lt;/span&gt;blinker,&lt;span class="w"&gt; &lt;/span&gt;python-dateutil,&lt;span class="w"&gt; &lt;/span&gt;markdown-it-py,&lt;span class="w"&gt; &lt;/span&gt;livereload,&lt;span class="w"&gt; &lt;/span&gt;jinja2,&lt;span class="w"&gt; &lt;/span&gt;anyio,&lt;span class="w"&gt; &lt;/span&gt;watchfiles,&lt;span class="w"&gt; &lt;/span&gt;rich,&lt;span class="w"&gt; &lt;/span&gt;pelican
+Successfully&lt;span class="w"&gt; &lt;/span&gt;installed&lt;span class="w"&gt; &lt;/span&gt;anyio-4.7.0&lt;span class="w"&gt; &lt;/span&gt;blinker-1.9.0&lt;span class="w"&gt; &lt;/span&gt;docutils-0.21.2&lt;span class="w"&gt; &lt;/span&gt;feedgenerator-2.1.0&lt;span class="w"&gt; &lt;/span&gt;idna-3.10&lt;span class="w"&gt; &lt;/span&gt;invoke-2.2.0&lt;span class="w"&gt; &lt;/span&gt;jinja2-3.1.5&lt;span class="w"&gt; &lt;/span&gt;livereload-2.7.1&lt;span class="w"&gt; &lt;/span&gt;markdown-3.7&lt;span class="w"&gt; &lt;/span&gt;markdown-it-py-3.0.0&lt;span class="w"&gt; &lt;/span&gt;markupsafe-3.0.2&lt;span class="w"&gt; &lt;/span&gt;mdurl-0.1.2&lt;span class="w"&gt; &lt;/span&gt;ordered-set-4.1.0&lt;span class="w"&gt; &lt;/span&gt;pelican-4.10.2&lt;span class="w"&gt; &lt;/span&gt;pygments-2.18.0&lt;span class="w"&gt; &lt;/span&gt;python-dateutil-2.9.0.post0&lt;span class="w"&gt; &lt;/span&gt;pytz-2024.2&lt;span class="w"&gt; &lt;/span&gt;rich-13.9.4&lt;span class="w"&gt; &lt;/span&gt;six-1.17.0&lt;span class="w"&gt; &lt;/span&gt;sniffio-1.3.1&lt;span class="w"&gt; &lt;/span&gt;tornado-6.4.2&lt;span class="w"&gt; &lt;/span&gt;unidecode-1.3.8&lt;span class="w"&gt; &lt;/span&gt;watchfiles-1.0.3
+pip&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;--no-cache-dir&lt;span class="w"&gt; &lt;/span&gt;-r&lt;span class="w"&gt; &lt;/span&gt;requirements.txt&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="m"&gt;6&lt;/span&gt;.87s&lt;span class="w"&gt; &lt;/span&gt;user&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;.54s&lt;span class="w"&gt; &lt;/span&gt;system&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;80&lt;/span&gt;%&lt;span class="w"&gt; &lt;/span&gt;cpu&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;9&lt;/span&gt;.154&lt;span class="w"&gt; &lt;/span&gt;total
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Using uv we got 13x speed up !&lt;/p&gt;
+&lt;h1&gt;Goal.&lt;/h1&gt;
+&lt;p&gt;Create a python project using &lt;a href="https://docs.astral.sh/uv/"&gt;uv&lt;/a&gt;, add dependencies and test that dependencies are installed.&lt;/p&gt;
+&lt;p&gt;The toy project will be a static site generated using &lt;a href="https://getpelican.com/"&gt;Pelican&lt;/a&gt; which is a static site generator powered by Python!&lt;/p&gt;
+&lt;h1&gt;Install uv.&lt;/h1&gt;
+&lt;p&gt;The complete installation can be found at &lt;a href="https://docs.astral.sh/uv/getting-started/installation/"&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;brew&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;uv
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h1&gt;Create a project.&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;uv&lt;span class="w"&gt; &lt;/span&gt;init&lt;span class="w"&gt; &lt;/span&gt;project
+&lt;span class="nb"&gt;cd&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;project
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h1&gt;Install Dependencies.&lt;/h1&gt;
+&lt;p&gt;We will install dependencies needed to create, build, generate a site maintained by &lt;a href="https://getpelican.com/"&gt;Pelican&lt;/a&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;uv&lt;span class="w"&gt; &lt;/span&gt;add&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;"pelican[markdown]==4.10.2"&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;"invoke==2.2.0"&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;"livereload==2.7.1"&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;uv will create automatically:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Python virtual environment under “.venv” folder.&lt;/li&gt;
+&lt;li&gt;Python configuration file aka “pyproject.toml”&lt;/li&gt;
+&lt;li&gt;Download and install dependencies (and dependencies of dependencies) and update “pyproject.toml” for you.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1&gt;Test that dependencies are properly installed.&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;uv&lt;span class="w"&gt; &lt;/span&gt;run&lt;span class="w"&gt; &lt;/span&gt;python&lt;span class="w"&gt; &lt;/span&gt;-c&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;"import pelican; print(pelican.__version__)"&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;
+&amp;gt;&amp;gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;4&lt;/span&gt;.10.2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h1&gt;Run live reload of the site.&lt;/h1&gt;
+&lt;p&gt;we will use one liner instead of activating a virtual-env then running &lt;code&gt;invoke&lt;/code&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# Preferred: one liner option&lt;/span&gt;
+uv&lt;span class="w"&gt; &lt;/span&gt;run&lt;span class="w"&gt; &lt;/span&gt;invoke&lt;span class="w"&gt; &lt;/span&gt;livereload
+
+&lt;span class="c1"&gt;# Cumbersome: multi line that works as well :)&lt;/span&gt;
+&lt;span class="nb"&gt;source&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;.venv/bin/activate
+invoke&lt;span class="w"&gt; &lt;/span&gt;livereload
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h1&gt;Bonus section - the old way (virtual-env and pip) but faster !&lt;/h1&gt;
+&lt;p&gt;In this section we will see how to use uv to generate list of dependencies and installing this the old way.
+Create a &lt;code&gt;requirements.in&lt;/code&gt; with the direct dependencies that you need.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;cat&lt;span class="w"&gt; &lt;/span&gt;requirements.in
+
+pelican&lt;span class="o"&gt;[&lt;/span&gt;markdown&lt;span class="o"&gt;]==&lt;/span&gt;&lt;span class="m"&gt;4&lt;/span&gt;.10.2
+&lt;span class="nv"&gt;invoke&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;.2.0
+&lt;span class="nv"&gt;livereload&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;.7.1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# Create a virtual environment&lt;/span&gt;
+uv&lt;span class="w"&gt; &lt;/span&gt;venv&lt;span class="w"&gt; &lt;/span&gt;.venv
+
+&lt;span class="c1"&gt;# Activate virtual environment&lt;/span&gt;
+&lt;span class="nb"&gt;source&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;.venv/bin/activate
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# compile all the dependencies and dependencies of dependencies ... &lt;/span&gt;
+uv&lt;span class="w"&gt; &lt;/span&gt;pip&lt;span class="w"&gt; &lt;/span&gt;compile&lt;span class="w"&gt; &lt;/span&gt;requirements.in&lt;span class="w"&gt; &lt;/span&gt;-o&lt;span class="w"&gt; &lt;/span&gt;requirements.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;cat&lt;span class="w"&gt; &lt;/span&gt;requirements.txt
+
+----
+This&lt;span class="w"&gt; &lt;/span&gt;file&lt;span class="w"&gt; &lt;/span&gt;was&lt;span class="w"&gt; &lt;/span&gt;autogenerated&lt;span class="w"&gt; &lt;/span&gt;by&lt;span class="w"&gt; &lt;/span&gt;uv&lt;span class="w"&gt; &lt;/span&gt;via&lt;span class="w"&gt; &lt;/span&gt;the&lt;span class="w"&gt; &lt;/span&gt;following&lt;span class="w"&gt; &lt;/span&gt;command:
+&lt;span class="c1"&gt;#    uv pip compile requirements.in -o requirements.txt&lt;/span&gt;
+&lt;span class="nv"&gt;anyio&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="m"&gt;4&lt;/span&gt;.7.0
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="c1"&gt;# via watchfiles&lt;/span&gt;
+&lt;span class="nv"&gt;blinker&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;.9.0
+...
+----
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h1&gt;Installing dependencies&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# We will stiff use uv to download and instal libraries.&lt;/span&gt;
+uv&lt;span class="w"&gt; &lt;/span&gt;pip&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;-r&lt;span class="w"&gt; &lt;/span&gt;requirements.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="python"></category><category term="uv"></category><category term="python"></category><category term="venv"></category><category term="rust"></category><category term="pelican"></category><category term="site"></category><category term="pip"></category><category term="pip-compile"></category><category term="virtual-env"></category></entry><entry><title>K9s and How I Loved Exploring Kubernetes Again</title><link href="/posts/2021/11/08/k9s-and-how-i-loved-exploring-kubernetes-again/" rel="alternate"></link><published>2021-11-08T21:11:00-05:00</published><updated>2021-11-08T21:11:00-05:00</updated><author><name>Hichame El Khalfi</name></author><id>tag:None,2021-11-08:/posts/2021/11/08/k9s-and-how-i-loved-exploring-kubernetes-again/</id><summary type="html">&lt;p&gt;I use kubernetes regularly and most of the time I cannot remember what command
+to run let say to open shell into a container or to list the current containers and so on.
+&lt;code&gt;kubectl&lt;/code&gt; command is very powerful but also very very verbose :)&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://k9scli.io"&gt;k9s&lt;/a&gt; is the perfect tool for me …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I use kubernetes regularly and most of the time I cannot remember what command
+to run let say to open shell into a container or to list the current containers and so on.
+&lt;code&gt;kubectl&lt;/code&gt; command is very powerful but also very very verbose :)&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://k9scli.io"&gt;k9s&lt;/a&gt; is the perfect tool for me as it make these command super easy to run the following (and much more) with
+one keystroke:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Open a shell in a container.&lt;/li&gt;
+&lt;li&gt;Show the logs of a container.&lt;/li&gt;
+&lt;li&gt;where can you find all the shortcut.&lt;/li&gt;
+&lt;li&gt;…&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;Install k9s&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="w"&gt; &lt;/span&gt;brew&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;derailed/k9s/k9s
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Linux and Windows are also supported, check k9s &lt;a href="https://k9scli.io/topics/install/"&gt;installation page&lt;/a&gt;
+for what needs to be done.&lt;/p&gt;
+&lt;h2&gt;Configure your kubernetes context (kubeconfig)&lt;/h2&gt;
+&lt;p&gt;In order to connect to you kubernetes cluster, you will need a kubeconfig file that most of the time will
+live in &lt;code&gt;~/.kube/config&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;As an &lt;span class="caps"&gt;AWS&lt;/span&gt; user, I’m going to use aws cli to create this file for me.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;aws&lt;span class="w"&gt; &lt;/span&gt;eks&lt;span class="w"&gt; &lt;/span&gt;--region&lt;span class="w"&gt; &lt;/span&gt;&amp;lt;region-code&amp;gt;&lt;span class="w"&gt; &lt;/span&gt;update-kubeconfig&lt;span class="w"&gt; &lt;/span&gt;--name&lt;span class="w"&gt; &lt;/span&gt;&amp;lt;cluster_name&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;For more info, check &lt;a href="https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html"&gt;&lt;span class="caps"&gt;AWS&lt;/span&gt; guide to create kubeconfig&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;Run k9s&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# run k9s from the command line&lt;/span&gt;
+k9s
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;You should see k9s ui.
+&lt;img alt="main menu" src="/images/k9/main.png" title="ui"/&gt;&lt;/p&gt;
+&lt;h2&gt;How to open a shell inside a container&lt;/h2&gt;
+&lt;p&gt;Once you select your running container, hit &lt;code&gt;s&lt;/code&gt; button and Voila!
+&lt;img alt="open a shell" src="/images/k9/shell.png" title="Shelling inside a container"/&gt;&lt;/p&gt;
+&lt;h2&gt;List of shortcuts&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Shell: &lt;code&gt;s&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Logs: &lt;code&gt;l&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Describe: &lt;code&gt;d&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Attach: &lt;code&gt;a&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Delete: &lt;code&gt;ctrl-d&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Edit: &lt;code&gt;e&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Help: &lt;code&gt;?&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Kill: &lt;code&gt;ctrl-k&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Logs previous: &lt;code&gt;p&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Port-Forward: &lt;code&gt;shift-f&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Show PortForward: &lt;code&gt;f&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class="caps"&gt;YAML&lt;/span&gt;: &lt;code&gt;y&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;These commands can change in the future, there are available on the top left of the ui in case you need them :)
+&lt;img alt="List of shortcuts" src="/images/k9/shortcuts.png" title="list of shortcuts"/&gt;&lt;/p&gt;
+&lt;p&gt;To get the complete list of shortcuts, hit &lt;code&gt;?&lt;/code&gt; to go into the help section
+&lt;img alt="help" src="/images/k9/help.png" title="exhaustive list of what you can do"/&gt;&lt;/p&gt;</content><category term="kubernetes"></category><category term="k9s"></category><category term="k8s"></category><category term="kubernetes"></category><category term="kubectl"></category><category term="eks"></category><category term="aws"></category><category term="infrastructure"></category></entry></feed>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Software Engineering Medley - kubernetes</title><link href="/" rel="alternate"></link><link href="/feeds/kubernetes.atom.xml" rel="self"></link><id>/</id><updated>2021-11-08T21:11:00-05:00</updated><entry><title>K9s and How I Loved Exploring Kubernetes Again</title><link href="/posts/2021/11/08/k9s-and-how-i-loved-exploring-kubernetes-again/" rel="alternate"></link><published>2021-11-08T21:11:00-05:00</published><updated>2021-11-08T21:11:00-05:00</updated><author><name>Hichame El Khalfi</name></author><id>tag:None,2021-11-08:/posts/2021/11/08/k9s-and-how-i-loved-exploring-kubernetes-again/</id><summary type="html">&lt;p&gt;I use kubernetes regularly and most of the time I cannot remember what command
+to run let say to open shell into a container or to list the current containers and so on.
+&lt;code&gt;kubectl&lt;/code&gt; command is very powerful but also very very verbose :)&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://k9scli.io"&gt;k9s&lt;/a&gt; is the perfect tool for me …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I use kubernetes regularly and most of the time I cannot remember what command
+to run let say to open shell into a container or to list the current containers and so on.
+&lt;code&gt;kubectl&lt;/code&gt; command is very powerful but also very very verbose :)&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://k9scli.io"&gt;k9s&lt;/a&gt; is the perfect tool for me as it make these command super easy to run the following (and much more) with
+one keystroke:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Open a shell in a container.&lt;/li&gt;
+&lt;li&gt;Show the logs of a container.&lt;/li&gt;
+&lt;li&gt;where can you find all the shortcut.&lt;/li&gt;
+&lt;li&gt;…&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;Install k9s&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="w"&gt; &lt;/span&gt;brew&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;derailed/k9s/k9s
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Linux and Windows are also supported, check k9s &lt;a href="https://k9scli.io/topics/install/"&gt;installation page&lt;/a&gt;
+for what needs to be done.&lt;/p&gt;
+&lt;h2&gt;Configure your kubernetes context (kubeconfig)&lt;/h2&gt;
+&lt;p&gt;In order to connect to you kubernetes cluster, you will need a kubeconfig file that most of the time will
+live in &lt;code&gt;~/.kube/config&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;As an &lt;span class="caps"&gt;AWS&lt;/span&gt; user, I’m going to use aws cli to create this file for me.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;aws&lt;span class="w"&gt; &lt;/span&gt;eks&lt;span class="w"&gt; &lt;/span&gt;--region&lt;span class="w"&gt; &lt;/span&gt;&amp;lt;region-code&amp;gt;&lt;span class="w"&gt; &lt;/span&gt;update-kubeconfig&lt;span class="w"&gt; &lt;/span&gt;--name&lt;span class="w"&gt; &lt;/span&gt;&amp;lt;cluster_name&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;For more info, check &lt;a href="https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html"&gt;&lt;span class="caps"&gt;AWS&lt;/span&gt; guide to create kubeconfig&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;Run k9s&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="c1"&gt;# run k9s from the command line&lt;/span&gt;
+k9s
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;You should see k9s ui.
+&lt;img alt="main menu" src="/images/k9/main.png" title="ui"/&gt;&lt;/p&gt;
+&lt;h2&gt;How to open a shell inside a container&lt;/h2&gt;
+&lt;p&gt;Once you select your running container, hit &lt;code&gt;s&lt;/code&gt; button and Voila!
+&lt;img alt="open a shell" src="/images/k9/shell.png" title="Shelling inside a container"/&gt;&lt;/p&gt;
+&lt;h2&gt;List of shortcuts&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Shell: &lt;code&gt;s&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Logs: &lt;code&gt;l&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Describe: &lt;code&gt;d&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Attach: &lt;code&gt;a&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Delete: &lt;code&gt;ctrl-d&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Edit: &lt;code&gt;e&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Help: &lt;code&gt;?&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Kill: &lt;code&gt;ctrl-k&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Logs previous: &lt;code&gt;p&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Port-Forward: &lt;code&gt;shift-f&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Show PortForward: &lt;code&gt;f&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class="caps"&gt;YAML&lt;/span&gt;: &lt;code&gt;y&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;These commands can change in the future, there are available on the top left of the ui in case you need them :)
+&lt;img alt="List of shortcuts" src="/images/k9/shortcuts.png" title="list of shortcuts"/&gt;&lt;/p&gt;
+&lt;p&gt;To get the complete list of shortcuts, hit &lt;code&gt;?&lt;/code&gt; to go into the help section
+&lt;img alt="help" src="/images/k9/help.png" title="exhaustive list of what you can do"/&gt;&lt;/p&gt;</content><category term="kubernetes"></category><category term="k9s"></category><category term="k8s"></category><category term="kubernetes"></category><category term="kubectl"></category><category term="eks"></category><category term="aws"></category><category term="infrastructure"></category></entry></feed>
