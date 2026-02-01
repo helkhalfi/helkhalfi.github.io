@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: helkhalfi-blog
+    runtime: static
+    buildCommand: |
+      pip install uv &&
+      uv sync &&
+      uv run pelican content -s publishconf.py
+    staticPublishPath: output
+    headers:
+      - path: /*
+        name: X-Frame-Options
+        value: SAMEORIGIN
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
