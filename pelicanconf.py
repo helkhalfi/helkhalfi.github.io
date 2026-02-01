@@ -18,7 +18,7 @@ AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
 GITHUB_URL = "http://github.com/helkhalfi/"
-THEME = "Flex"
+THEME = "themes/Flex"
 
 # Blogroll
 LINKS = (
