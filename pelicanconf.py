@@ -2,7 +2,7 @@ from datetime import datetime
 
 AUTHOR = 'Hichame El Khalfi'
 SITENAME = 'Software Engineering Medley'
-SITEURL = ' '
+SITEURL = ''
 
 PATH = "content"
 
