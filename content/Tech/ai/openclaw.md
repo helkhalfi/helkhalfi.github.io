@@ -24,15 +24,19 @@ This article walks through installing OpenClaw and configuring it to work with
 
 First, install Ollama which will serve as the local model runtime.
 
-```bash
-# macOS
-brew install ollama
+On macOS:
 
-# Linux
+```bash
+brew install ollama
+```
+
+On Linux:
+
+```bash
 curl -fsSL https://ollama.com/install.sh | sh
 ```
 
-Start the Ollama server:
+Then start the Ollama server:
 
 ```bash
 ollama serve
@@ -43,15 +47,15 @@ ollama serve
 Qwen3-Coder is the most agentic code model in the Qwen series. It is a Mixture of Experts model
 optimized for software engineering tasks and tool calling.
 
+The 30B variant has 3.3B active parameters and runs on most machines with 16GB+ RAM:
+
 ```bash
-# 30B variant (3.3B active parameters) - runs on most machines with 16GB+ RAM
 ollama pull qwen3-coder:30b
 ```
 
-For machines with more memory, the full 480B parameter model is also available:
+For machines with more memory, the full 480B parameter model is also available (requires 250GB+):
 
 ```bash
-# 480B variant - requires 250GB+ of memory
 ollama pull qwen3-coder:480b
 ```
 
@@ -60,18 +64,22 @@ ollama pull qwen3-coder:480b
 By default, Ollama caps the context window at 4096 tokens regardless of what the model supports.
 Qwen3-Coder supports up to 262k tokens, so you will want to increase this.
 
+Start an interactive session with the model:
+
 ```bash
-# Start an interactive session
 ollama run qwen3-coder:30b
+```
 
-# Inside the session, set the context window
+Inside the interactive session, set the context window and save a new variant:
+
+```
 /set parameter num_ctx 32768
-
-# Save as a new variant
 /save qwen3-coder-32k:30b
 ```
 
-Alternatively, set these environment variables before starting `ollama serve`:
+Then type `/bye` to exit the session.
+
+As an alternative, you can set these environment variables before starting `ollama serve`:
 
 ```bash
 export OLLAMA_CONTEXT_LENGTH=32768
@@ -110,7 +118,7 @@ pnpm openclaw onboard --install-daemon
 
 # Configure OpenClaw to use Qwen Coder via Ollama
 
-Edit the OpenClaw configuration file at `~/.openclaw/openclaw.json`:
+Edit the OpenClaw configuration file at `~/.openclaw/openclaw.json` and paste the following:
 
 ```json
 {
@@ -157,7 +165,7 @@ and set all costs to 0.
 
 # Configure tool permissions
 
-For the AI agent to actually do useful work, enable the tool permissions:
+For the AI agent to actually do useful work, add the tool permissions to `~/.openclaw/openclaw.json`:
 
 ```json
 {
