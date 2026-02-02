@@ -2,7 +2,7 @@ from datetime import datetime
 
 AUTHOR = 'Hichame El Khalfi'
 SITENAME = 'Software Engineering Medley'
-SITEURL = ' '
+SITEURL = ''
 
 PATH = "content"
 
@@ -18,7 +18,7 @@ AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
 GITHUB_URL = "http://github.com/helkhalfi/"
-THEME = "Flex"
+THEME = "themes/Flex"
 
 # Blogroll
 LINKS = (
