@@ -18,6 +18,12 @@ RUN python3 -m pip install --upgrade \
     "setuptools>=75.6.0" \
     "gitpython>=3.1.41"
 
-# Install uv — the package manager used by this project (pyproject.toml / uv.lock)
-# Installing via pip puts the binary on PATH for all users
+# Install uv — the Python package manager used by this project (pyproject.toml / uv.lock)
 RUN pip install --upgrade uv
+
+# Install Temporal CLI — provides `temporal server start-dev` for local development
+# The official install script detects the host architecture automatically.
+RUN curl -sSf https://temporal.download/cli.sh | sh \
+    && install -m 0755 /root/.temporalio/bin/temporal /usr/local/bin/temporal \
+    && rm -rf /root/.temporalio \
+    && temporal --version

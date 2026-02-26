@@ -1,12 +1,11 @@
 {
-    "name": "helkhalfi.github.io – Pelican blog",
+    "name": "helkhalfi.github.io – Pelican blog + Temporal.io",
     "build": {
         "dockerfile": "./Dockerfile",
-        // context is the .devcontainer/ folder; the workspace is mounted separately
         "context": "."
     },
     "features": {
-        // Common CLI utilities + Oh My Zsh (git, curl, etc. already in Dockerfile)
+        // Common CLI utilities + Oh My Zsh
         "ghcr.io/devcontainers/features/common-utils:2": {
             "installOhMyZsh": "true",
             "username": "vscode",
@@ -14,52 +13,64 @@
             "userGid": "1000",
             "upgradePackages": "true"
         },
-        // Latest git from PPA for better credential handling
+        // Latest git
         "ghcr.io/devcontainers/features/git:1": {
             "version": "latest",
             "ppa": "false"
+        },
+        // Node.js 20 LTS — required for the TypeScript / Temporal examples
+        "ghcr.io/devcontainers/features/node:1": {
+            "version": "20",
+            "nvmVersion": "latest"
         }
     },
     "customizations": {
         "vscode": {
             "settings": {
-                // Point VS Code at the uv-managed virtual environment
+                // Python: point VS Code at the uv-managed virtual environment
                 "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
                 "python.terminal.activateEnvironment": true,
-                // Pelican content is Markdown — enable word wrap
+                // TypeScript: use the workspace version of tsc
+                "typescript.tsdk": "${workspaceFolder}/examples/temporal-api-polling/node_modules/typescript/lib",
+                "typescript.enablePromptUseWorkspaceTsdk": true,
+                // Markdown: word-wrap for blog content
                 "[markdown]": {
                     "editor.wordWrap": "on",
                     "editor.rulers": [100]
                 }
             },
             "extensions": [
-                // Python support
+                // Python
                 "ms-python.python",
                 "ms-python.pylance",
+                // TypeScript / Node.js
+                "dbaeumer.vscode-eslint",
+                "esbenp.prettier-vscode",
                 // Markdown authoring
                 "yzhang.markdown-all-in-one",
                 "davidanson.vscode-markdownlint",
-                // Spell-check blog content
+                // Spell-check
                 "streetsidesoftware.code-spell-checker",
-                // YAML / TOML config files
+                // Config files
                 "redhat.vscode-yaml",
                 "tamasfe.even-better-toml",
-                // Pelican / Jinja2 templates
+                // Jinja2 templates
                 "samuelcolvin.jinjahtml"
             ]
         }
     },
-    // Forward the Pelican dev-server port so the browser on the host can reach it
-    "forwardPorts": [8000],
+    // Ports forwarded to the host:
+    //   8000 — Pelican live-reload dev server
+    //   3000 — mock HTTP API (Temporal activity target)
+    //   7233 — Temporal gRPC server
+    //   8233 — Temporal Web UI
+    "forwardPorts": [8000, 3000, 7233, 8233],
     "portsAttributes": {
-        "8000": {
-            "label": "Pelican dev server",
-            "onAutoForward": "notify"
-        }
+        "8000": { "label": "Pelican dev server",   "onAutoForward": "notify" },
+        "3000": { "label": "Mock API server",       "onAutoForward": "notify" },
+        "7233": { "label": "Temporal gRPC",         "onAutoForward": "silent" },
+        "8233": { "label": "Temporal Web UI",       "onAutoForward": "openBrowser" }
     },
-    // After the container is created:
-    //   1. install all Python deps via uv
-    //   2. clone + install the Flex Pelican theme
     "postCreateCommand": "bash .devcontainer/setup.sh",
     "remoteUser": "vscode"
 }
