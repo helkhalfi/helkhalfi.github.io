@@ -1,5 +1,11 @@
 .venv/
 cache/
 output/
-__pycache__
+__pycache__/
+*.pyc
 seo_report.html
+.env
+target/
+*.orig
+.coverage
+htmlcov/

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SwiftSend – fast, transparent international money transfers with real exchange rates and no hidden fees.">
+  <title>SwiftSend – Send Money Worldwide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+
+<header class="nav" role="banner">
+  <div class="container nav__inner">
+    <a href="/index.html" class="nav__logo" aria-label="SwiftSend home">
+      <svg class="nav__logo-icon" width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+        <circle cx="18" cy="18" r="18" fill="#00B9A9"/>
+        <path d="M10 18 L18 10 L26 18 L18 26 Z" fill="white"/>
+        <path d="M18 10 L26 18" stroke="#9FE870" stroke-width="2.5" stroke-linecap="round"/>
+      </svg>
+      <span class="nav__logo-text">SwiftSend</span>
+    </a>
+    <nav class="nav__links" aria-label="Primary navigation">
+      <a href="/index.html" class="nav__link">Home</a>
+      <a href="/pricing.html" class="nav__link">Pricing</a>
+      <a href="/send.html" class="nav__link">Send money</a>
+      <a href="/track.html" class="nav__link">Track</a>
+    </nav>
+    <div class="nav__actions">
+      <div id="nav-anon">
+        <a href="/login.html" class="btn btn--ghost btn--sm">Log in</a>
+        <a href="/register.html" class="btn btn--primary btn--sm">Get started</a>
+      </div>
+      <div id="nav-user" class="hidden">
+        <button class="nav__balance-pill" id="nav-balance" aria-label="Your balance">
+          <i class="fa-solid fa-wallet" aria-hidden="true"></i>
+          <span id="nav-balance-amount">--</span>
+        </button>
+        <div class="nav__avatar-wrap">
+          <button class="nav__avatar" id="nav-avatar-btn" aria-label="Account menu" aria-expanded="false" aria-controls="nav-dropdown">
+            <span id="nav-avatar-initials">--</span>
+          </button>
+          <div class="nav__dropdown hidden" id="nav-dropdown" role="menu">
+            <div class="nav__dropdown-header">
+              <span class="nav__dropdown-name" id="nav-dropdown-name">--</span>
+              <span class="nav__dropdown-email" id="nav-dropdown-email">--</span>
+            </div>
+            <div class="nav__dropdown-divider" role="separator"></div>
+            <a href="/dashboard.html" class="nav__dropdown-item" role="menuitem"><i class="fa-solid fa-gauge" aria-hidden="true"></i> Dashboard</a>
+            <a href="/send.html" class="nav__dropdown-item" role="menuitem"><i class="fa-solid fa-paper-plane" aria-hidden="true"></i> New transfer</a>
+            <a href="/track.html" class="nav__dropdown-item" role="menuitem"><i class="fa-solid fa-route" aria-hidden="true"></i> Track transfer</a>
+            <div class="nav__dropdown-divider" role="separator"></div>
+            <button class="nav__dropdown-item nav__dropdown-item--danger" id="nav-logout" role="menuitem"><i class="fa-solid fa-right-from-bracket" aria-hidden="true"></i> Log out</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="nav__hamburger" id="nav-hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-mobile-menu">
+      <span class="nav__hamburger-bar"></span>
+      <span class="nav__hamburger-bar"></span>
+      <span class="nav__hamburger-bar"></span>
+    </button>
+  </div>
+  <div class="nav__mobile-menu hidden" id="nav-mobile-menu" role="dialog" aria-label="Mobile navigation">
+    <div class="nav__mobile-links">
+      <a href="/index.html" class="nav__mobile-link">Home</a>
+      <a href="/pricing.html" class="nav__mobile-link">Pricing</a>
+      <a href="/send.html" class="nav__mobile-link">Send money</a>
+      <a href="/track.html" class="nav__mobile-link">Track</a>
+    </div>
+    <div class="nav__mobile-actions">
+      <a href="/login.html" class="btn btn--ghost btn--full">Log in</a>
+      <a href="/register.html" class="btn btn--primary btn--full">Get started</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- Hero -->
+  <section class="hero" aria-labelledby="hero-heading">
+    <div class="container hero__inner">
+      <div class="hero__copy">
+        <div class="hero__badge">
+          <span class="live-dot" aria-hidden="true"></span>
+          Trusted by 200,000+ people worldwide
+        </div>
+        <h1 class="hero__heading" id="hero-heading">
+          Send money abroad.<br>
+          <span class="hero__heading-accent">Keep more of it.</span>
+        </h1>
+        <p class="hero__subtext">
+          SwiftSend uses the real mid-market exchange rate with a single transparent fee starting from 0.7%. No surprises. No markups. Just fast, reliable transfers to 30+ countries.
+        </p>
+        <ul class="hero__bullets" aria-label="Key benefits">
+          <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Real exchange rate – not the bank rate</li>
+          <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> 95% of transfers arrive same day</li>
+          <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Fee shown upfront before you commit</li>
+          <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> FCA-authorised and regulated</li>
+        </ul>
+        <div class="hero__cta-group">
+          <a href="/register.html" class="btn btn--primary btn--lg">Start for free</a>
+          <a href="/pricing.html" class="btn btn--ghost btn--lg">See our fees</a>
+        </div>
+      </div>
+      <div class="hero__widget">
+        <div class="converter-card" id="converter-widget" role="form" aria-label="Send money calculator">
+          <div class="converter-card__header">
+            <span style="font-weight:700;font-size:1.1rem">Calculate your transfer</span>
+            <button class="btn--icon" aria-label="Info"><i class="fa-solid fa-circle-info"></i></button>
+          </div>
+          <div class="converter-card__label">You send</div>
+          <div class="currency-input-group">
+            <input type="number" id="send-amount" class="currency-input__amount" value="1000" min="1" step="0.01" aria-label="Amount to send">
+            <select id="send-currency" class="currency-input__select" aria-label="Send currency"></select>
+          </div>
+          <div class="rate-bar" aria-live="polite">
+            <div><div class="rate-bar__label">Fee</div><div class="rate-bar__value" id="fee-display">--</div></div>
+            <button class="swap-btn" id="swap-currencies" aria-label="Swap currencies"><i class="fa-solid fa-arrows-up-down"></i></button>
+            <div style="text-align:right"><div class="rate-bar__label">Rate</div><div class="rate-bar__value" id="rate-display">--</div></div>
+          </div>
+          <div class="converter-card__label">Recipient gets</div>
+          <div class="currency-input-group">
+            <input type="number" id="receive-amount" class="currency-input__amount" readonly aria-label="Amount recipient gets" aria-live="polite">
+            <select id="receive-currency" class="currency-input__select" aria-label="Receive currency"></select>
+          </div>
+          <details class="fee-breakdown">
+            <summary><i class="fa-solid fa-circle-info"></i> See fee breakdown</summary>
+            <div class="fee-breakdown__body">
+              <div class="fee-row"><span>Variable fee (0.7%)</span><span id="variable-fee-val">--</span></div>
+              <div class="fee-row"><span>Fixed fee</span><span id="fixed-fee-val">--</span></div>
+              <div class="fee-row fee-row--total"><span>Total fees</span><span id="total-fee-val">--</span></div>
+              <div class="fee-row fee-row--rate"><span>Exchange rate</span><span id="rate-detail-val">--</span></div>
+              <div class="fee-row"><span>Estimated delivery</span><span id="delivery-val">--</span></div>
+            </div>
+          </details>
+          <a href="/send.html" id="hero-send-cta" class="btn btn--primary btn--full" style="margin-top:1rem">
+            Send money <i class="fa-solid fa-arrow-right"></i>
+          </a>
+          <p class="converter-card__disclaimer"><i class="fa-solid fa-lock"></i> Secure · No account needed to calculate</p>
+        </div>
+        <div class="live-rate-badge">
+          <span class="live-dot" aria-hidden="true"></span>
+          Live rates · Updated <span id="rate-timestamp">just now</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="section" aria-labelledby="how-heading">
+    <div class="container">
+      <div class="section__header">
+        <h2 class="section__title" id="how-heading">How SwiftSend works</h2>
+        <p class="section__subtitle">Four simple steps to send money anywhere in the world in minutes.</p>
+      </div>
+      <div class="steps-grid" role="list">
+        <div class="step-card" role="listitem">
+          <div class="step-card__number" aria-hidden="true">1</div>
+          <div class="step-card__icon"><i class="fa-solid fa-calculator" aria-hidden="true"></i></div>
+          <h3 class="step-card__title">Calculate your transfer</h3>
+          <p class="step-card__text">Enter the amount you want to send. See the exact fee and exchange rate before you do anything.</p>
+        </div>
+        <div class="step-card" role="listitem">
+          <div class="step-card__number" aria-hidden="true">2</div>
+          <div class="step-card__icon"><i class="fa-solid fa-user-plus" aria-hidden="true"></i></div>
+          <h3 class="step-card__title">Add your recipient</h3>
+          <p class="step-card__text">Enter your recipient's bank details. We support IBAN transfers and local bank routing for 30+ countries.</p>
+        </div>
+        <div class="step-card" role="listitem">
+          <div class="step-card__number" aria-hidden="true">3</div>
+          <div class="step-card__icon"><i class="fa-solid fa-credit-card" aria-hidden="true"></i></div>
+          <h3 class="step-card__title">Pay securely</h3>
+          <p class="step-card__text">Fund your transfer by bank transfer or debit card. Your payment is protected end-to-end with 256-bit TLS encryption.</p>
+        </div>
+        <div class="step-card" role="listitem">
+          <div class="step-card__number" aria-hidden="true">4</div>
+          <div class="step-card__icon"><i class="fa-solid fa-bolt" aria-hidden="true"></i></div>
+          <h3 class="step-card__title">Money delivered</h3>
+          <p class="step-card__text">Your recipient gets the money in their local currency – usually within the same business day. Track progress in real time.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why SwiftSend -->
+  <section class="section section--alt" aria-labelledby="why-heading">
+    <div class="container">
+      <div class="section__header">
+        <h2 class="section__title" id="why-heading">Why people choose SwiftSend</h2>
+        <p class="section__subtitle">We built the service we wished existed when sending money home.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-card__icon-wrap" aria-hidden="true">
+            <i class="fa-solid fa-scale-balanced"></i>
+          </div>
+          <h3 class="feature-card__title">Real mid-market rate</h3>
+          <p class="feature-card__text">We use the interbank exchange rate sourced from the European Central Bank – the same rate you see on Google. Banks typically mark up their rates by 3–5%. We don't.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon-wrap" aria-hidden="true">
+            <i class="fa-solid fa-receipt"></i>
+          </div>
+          <h3 class="feature-card__title">One transparent fee</h3>
+          <p class="feature-card__text">A small variable fee (from 0.7%) plus a fixed fee depending on currency corridor. That's it. No receiving-bank fees deducted from your amount, no hidden charges.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card__icon-wrap" aria-hidden="true">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+          <h3 class="feature-card__title">Safe and regulated</h3>
+          <p class="feature-card__text">SwiftSend is authorised by the FCA as an Electronic Money Institution. Your funds are held in safeguarded accounts separate from our operating capital.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats bar -->
+  <section class="stats-bar" aria-labelledby="stats-heading">
+    <h2 class="visually-hidden" id="stats-heading">SwiftSend by the numbers</h2>
+    <div class="container">
+      <div class="stats-bar__inner">
+        <div class="stat-item">
+          <span class="stat-item__value">200k+</span>
+          <span class="stat-item__label">Active users</span>
+        </div>
+        <div class="stat-divider" aria-hidden="true"></div>
+        <div class="stat-item">
+          <span class="stat-item__value">30+</span>
+          <span class="stat-item__label">Currencies supported</span>
+        </div>
+        <div class="stat-divider" aria-hidden="true"></div>
+        <div class="stat-item">
+          <span class="stat-item__value">95%</span>
+          <span class="stat-item__label">Same-day delivery</span>
+        </div>
+        <div class="stat-divider" aria-hidden="true"></div>
+        <div class="stat-item">
+          <span class="stat-item__value">4.8 ★</span>
+          <span class="stat-item__label">Trustpilot rating</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA banner -->
+  <section class="cta-banner" aria-labelledby="cta-heading">
+    <div class="container cta-banner__inner">
+      <div>
+        <h2 class="cta-banner__title" id="cta-heading">Ready to send your first transfer?</h2>
+        <p class="cta-banner__sub">Create a free account in under 2 minutes. No credit card required.</p>
+      </div>
+      <div class="cta-banner__actions">
+        <a href="/register.html" class="btn btn--primary btn--lg">Get started free</a>
+        <a href="/pricing.html" class="btn btn--outline-white btn--lg">View pricing</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <div class="footer__brand">SwiftSend</div>
+        <p class="footer__tagline">Fast, transparent international money transfers. No hidden fees. Real exchange rates.</p>
+      </div>
+      <div>
+        <div class="footer__heading">Product</div>
+        <div class="footer__links">
+          <a href="/send.html" class="footer__link">Send money</a>
+          <a href="/pricing.html" class="footer__link">Pricing</a>
+          <a href="/track.html" class="footer__link">Track transfer</a>
+          <a href="/dashboard.html" class="footer__link">Dashboard</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer__heading">Company</div>
+        <div class="footer__links">
+          <a href="#" class="footer__link">About</a>
+          <a href="#" class="footer__link">Blog</a>
+          <a href="#" class="footer__link">Careers</a>
+          <a href="#" class="footer__link">Press</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer__heading">Legal</div>
+        <div class="footer__links">
+          <a href="#" class="footer__link">Privacy</a>
+          <a href="#" class="footer__link">Terms</a>
+          <a href="#" class="footer__link">Cookies</a>
+          <a href="#" class="footer__link">Licenses</a>
+        </div>
+      </div>
+    </div>
+    <p class="footer__disclaimer">SwiftSend is a demonstration project. It is not a regulated financial institution and does not process real money transfers. Exchange rates are provided by Frankfurter API (European Central Bank data).</p>
+    <div class="footer__bottom">
+      <span>© 2025 SwiftSend. All rights reserved.</span>
+      <span>Built with FastAPI · PostgreSQL · Redis · Rust</span>
+    </div>
+  </div>
+</footer>
+
+<script type="module">
+  import { initNav } from './js/main.js';
+  import { bindConverter } from './js/converter.js';
+  document.addEventListener('DOMContentLoaded', () => {
+    initNav();
+    bindConverter({ sendCtaId: 'hero-send-cta', timestampId: 'rate-timestamp' });
+  });
+</script>
+</body>
+</html>

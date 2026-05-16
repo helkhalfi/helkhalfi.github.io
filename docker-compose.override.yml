@@ -1,0 +1,30 @@
+services:
+  backend:
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+    volumes:
+      - ./backend:/app
+    environment:
+      DEBUG: "true"
+    ports:
+      - "8000:8000"
+
+  worker:
+    command: celery -A app.workers.celery_app worker --loglevel=debug -Q transfers,rates -c 2
+    volumes:
+      - ./backend:/app
+
+  beat:
+    volumes:
+      - ./backend:/app
+
+  frontend:
+    volumes:
+      - ./frontend/public:/usr/share/nginx/html:ro
+
+  postgres:
+    ports:
+      - "5432:5432"
+
+  redis:
+    ports:
+      - "6379:6379"
