@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Send money internationally with SwiftSend. Real exchange rates, transparent fees, fast delivery.">
+  <title>Send Money – SwiftSend</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+
+<header class="nav" role="banner">
+  <div class="container nav__inner">
+    <a href="/index.html" class="nav__logo" aria-label="SwiftSend home">
+      <svg class="nav__logo-icon" width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+        <circle cx="18" cy="18" r="18" fill="#00B9A9"/>
+        <path d="M10 18 L18 10 L26 18 L18 26 Z" fill="white"/>
+        <path d="M18 10 L26 18" stroke="#9FE870" stroke-width="2.5" stroke-linecap="round"/>
+      </svg>
+      <span class="nav__logo-text">SwiftSend</span>
+    </a>
+    <nav class="nav__links" aria-label="Primary navigation">
+      <a href="/index.html" class="nav__link">Home</a>
+      <a href="/pricing.html" class="nav__link">Pricing</a>
+      <a href="/send.html" class="nav__link">Send money</a>
+      <a href="/track.html" class="nav__link">Track</a>
+    </nav>
+    <div class="nav__actions">
+      <div id="nav-anon">
+        <a href="/login.html" class="btn btn--ghost btn--sm">Log in</a>
+        <a href="/register.html" class="btn btn--primary btn--sm">Get started</a>
+      </div>
+      <div id="nav-user" class="hidden">
+        <button class="nav__balance-pill" id="nav-balance" aria-label="Your balance">
+          <i class="fa-solid fa-wallet" aria-hidden="true"></i>
+          <span id="nav-balance-amount">--</span>
+        </button>
+        <div class="nav__avatar-wrap">
+          <button class="nav__avatar" id="nav-avatar-btn" aria-label="Account menu" aria-expanded="false" aria-controls="nav-dropdown">
+            <span id="nav-avatar-initials">--</span>
+          </button>
+          <div class="nav__dropdown hidden" id="nav-dropdown" role="menu">
+            <div class="nav__dropdown-header">
+              <span class="nav__dropdown-name" id="nav-dropdown-name">--</span>
+              <span class="nav__dropdown-email" id="nav-dropdown-email">--</span>
+            </div>
+            <div class="nav__dropdown-divider" role="separator"></div>
+            <a href="/dashboard.html" class="nav__dropdown-item" role="menuitem"><i class="fa-solid fa-gauge" aria-hidden="true"></i> Dashboard</a>
+            <a href="/send.html" class="nav__dropdown-item" role="menuitem"><i class="fa-solid fa-paper-plane" aria-hidden="true"></i> New transfer</a>
+            <a href="/track.html" class="nav__dropdown-item" role="menuitem"><i class="fa-solid fa-route" aria-hidden="true"></i> Track transfer</a>
+            <div class="nav__dropdown-divider" role="separator"></div>
+            <button class="nav__dropdown-item nav__dropdown-item--danger" id="nav-logout" role="menuitem"><i class="fa-solid fa-right-from-bracket" aria-hidden="true"></i> Log out</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="nav__hamburger" id="nav-hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-mobile-menu">
+      <span class="nav__hamburger-bar"></span>
+      <span class="nav__hamburger-bar"></span>
+      <span class="nav__hamburger-bar"></span>
+    </button>
+  </div>
+  <div class="nav__mobile-menu hidden" id="nav-mobile-menu" role="dialog" aria-label="Mobile navigation">
+    <div class="nav__mobile-links">
+      <a href="/index.html" class="nav__mobile-link">Home</a>
+      <a href="/pricing.html" class="nav__mobile-link">Pricing</a>
+      <a href="/send.html" class="nav__mobile-link">Send money</a>
+      <a href="/track.html" class="nav__mobile-link">Track</a>
+    </div>
+    <div class="nav__mobile-actions">
+      <a href="/login.html" class="btn btn--ghost btn--full">Log in</a>
+      <a href="/register.html" class="btn btn--primary btn--full">Get started</a>
+    </div>
+  </div>
+</header>
+
+<main class="page-send">
+  <div class="container">
+    <div class="page-send__layout">
+
+      <!-- Left: step flow -->
+      <div class="transfer-flow" id="transfer-flow">
+
+        <!-- Step indicator -->
+        <nav class="step-indicator" aria-label="Transfer steps">
+          <ol class="step-indicator__list">
+            <li class="step-indicator__item is-active" id="step-ind-1" data-step="1">
+              <span class="step-indicator__bubble">1</span>
+              <span class="step-indicator__label">Amount</span>
+            </li>
+            <li class="step-indicator__item" id="step-ind-2" data-step="2">
+              <span class="step-indicator__bubble">2</span>
+              <span class="step-indicator__label">Recipient</span>
+            </li>
+            <li class="step-indicator__item" id="step-ind-3" data-step="3">
+              <span class="step-indicator__bubble">3</span>
+              <span class="step-indicator__label">Payment</span>
+            </li>
+            <li class="step-indicator__item" id="step-ind-4" data-step="4">
+              <span class="step-indicator__bubble">4</span>
+              <span class="step-indicator__label">Confirm</span>
+            </li>
+          </ol>
+        </nav>
+
+        <!-- Step 1: Amount -->
+        <section class="transfer-step" id="step-1" aria-labelledby="step1-heading">
+          <h1 class="transfer-step__title" id="step1-heading">
+            <i class="fa-solid fa-calculator" aria-hidden="true"></i>
+            How much are you sending?
+          </h1>
+          <p class="transfer-step__subtitle">Use the live calculator below to see exactly what your recipient will receive after fees.</p>
+
+          <div class="transfer-converter">
+            <div class="transfer-converter__label">You send</div>
+            <div class="currency-input-group">
+              <input type="number" id="s1-send-amount" class="currency-input__amount" value="500" min="1" step="0.01" aria-label="Amount to send">
+              <select id="s1-send-currency" class="currency-input__select" aria-label="Send currency"></select>
+            </div>
+
+            <div class="rate-bar" aria-live="polite">
+              <div>
+                <div class="rate-bar__label">Fee</div>
+                <div class="rate-bar__value" id="s1-fee-display">--</div>
+              </div>
+              <button class="swap-btn" id="s1-swap-currencies" aria-label="Swap currencies">
+                <i class="fa-solid fa-arrows-up-down"></i>
+              </button>
+              <div style="text-align:right">
+                <div class="rate-bar__label">Rate</div>
+                <div class="rate-bar__value" id="s1-rate-display">--</div>
+              </div>
+            </div>
+
+            <div class="transfer-converter__label">Recipient gets</div>
+            <div class="currency-input-group">
+              <input type="number" id="s1-recv-amount" class="currency-input__amount" readonly aria-label="Amount recipient gets" aria-live="polite">
+              <select id="s1-recv-currency" class="currency-input__select" aria-label="Receive currency"></select>
+            </div>
+
+            <details class="fee-breakdown">
+              <summary><i class="fa-solid fa-circle-info"></i> See full fee breakdown</summary>
+              <div class="fee-breakdown__body">
+                <div class="fee-row"><span>Variable fee (0.7%)</span><span id="s1-variable-fee-val">--</span></div>
+                <div class="fee-row"><span>Fixed fee</span><span id="s1-fixed-fee-val">--</span></div>
+                <div class="fee-row fee-row--total"><span>Total fees</span><span id="s1-total-fee-val">--</span></div>
+                <div class="fee-row fee-row--rate"><span>Exchange rate</span><span id="s1-rate-detail-val">--</span></div>
+                <div class="fee-row"><span>Estimated delivery</span><span id="s1-delivery-val">--</span></div>
+              </div>
+            </details>
+          </div>
+
+          <div class="transfer-step__actions">
+            <button class="btn btn--primary btn--lg btn--full" id="step1-next">
+              Continue <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+            </button>
+          </div>
+          <p class="transfer-step__notice">
+            <i class="fa-solid fa-lock" aria-hidden="true"></i>
+            Exchange rate locked for 30 minutes after you proceed.
+          </p>
+        </section>
+
+        <!-- Step 2: Recipient -->
+        <section class="transfer-step hidden" id="step-2" aria-labelledby="step2-heading">
+          <h2 class="transfer-step__title" id="step2-heading">
+            <i class="fa-solid fa-user" aria-hidden="true"></i>
+            Recipient details
+          </h2>
+          <p class="transfer-step__subtitle">Enter the bank details for the person or business you're sending money to.</p>
+
+          <form class="transfer-form" id="recipient-form" novalidate>
+            <div class="form-group">
+              <label class="form-label" for="r-fullname">Recipient full name <span class="form-required" aria-hidden="true">*</span></label>
+              <input type="text" id="r-fullname" name="r-fullname" class="form-input" placeholder="e.g. Maria Santos" autocomplete="name" required aria-required="true">
+              <div class="form-hint">Enter the name exactly as it appears on their bank account.</div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="r-email">Recipient email <span class="form-optional">(optional)</span></label>
+              <input type="email" id="r-email" name="r-email" class="form-input" placeholder="recipient@example.com" autocomplete="email">
+              <div class="form-hint">We'll send them a notification when their money arrives.</div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="r-bank">Bank name <span class="form-required" aria-hidden="true">*</span></label>
+              <input type="text" id="r-bank" name="r-bank" class="form-input" placeholder="e.g. Banco do Brasil" required aria-required="true">
+            </div>
+
+            <!-- IBAN fields (shown for EUR, GBP, etc.) -->
+            <div id="iban-fields">
+              <div class="form-group">
+                <label class="form-label" for="r-iban">IBAN <span class="form-required" aria-hidden="true">*</span></label>
+                <input type="text" id="r-iban" name="r-iban" class="form-input form-input--mono" placeholder="e.g. DE89370400440532013000" autocomplete="off" maxlength="34" required aria-required="true">
+                <div class="form-hint">International Bank Account Number — up to 34 characters.</div>
+              </div>
+            </div>
+
+            <!-- Routing fields (shown for USD, etc.) -->
+            <div id="routing-fields" class="hidden">
+              <div class="form-group">
+                <label class="form-label" for="r-routing">Routing number <span class="form-required" aria-hidden="true">*</span></label>
+                <input type="text" id="r-routing" name="r-routing" class="form-input form-input--mono" placeholder="e.g. 021000021" maxlength="9" pattern="[0-9]{9}">
+                <div class="form-hint">9-digit ABA routing number found at the bottom of a cheque.</div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="r-account">Account number <span class="form-required" aria-hidden="true">*</span></label>
+                <input type="text" id="r-account" name="r-account" class="form-input form-input--mono" placeholder="e.g. 000123456789" maxlength="17">
+              </div>
+              <fieldset class="form-fieldset">
+                <legend class="form-legend">Account type</legend>
+                <div class="form-radio-group">
+                  <label class="form-radio">
+                    <input type="radio" name="r-account-type" value="checking" checked>
+                    <span>Checking</span>
+                  </label>
+                  <label class="form-radio">
+                    <input type="radio" name="r-account-type" value="savings">
+                    <span>Savings</span>
+                  </label>
+                </div>
+              </fieldset>
+            </div>
+
+            <div class="transfer-step__actions transfer-step__actions--row">
+              <button type="button" class="btn btn--ghost btn--lg" id="step2-back">
+                <i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Back
+              </button>
+              <button type="submit" class="btn btn--primary btn--lg">
+                Continue <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+              </button>
+            </div>
+          </form>
+        </section>
+
+        <!-- Step 3: Payment -->
+        <section class="transfer-step hidden" id="step-3" aria-labelledby="step3-heading">
+          <h2 class="transfer-step__title" id="step3-heading">
+            <i class="fa-solid fa-credit-card" aria-hidden="true"></i>
+            How would you like to pay?
+          </h2>
+          <p class="transfer-step__subtitle">Choose a payment method to fund your transfer.</p>
+
+          <div class="payment-options" role="group" aria-label="Payment method">
+            <label class="payment-option" id="opt-bank">
+              <input type="radio" name="payment-method" value="bank" checked class="payment-option__radio">
+              <div class="payment-option__content">
+                <i class="fa-solid fa-building-columns payment-option__icon" aria-hidden="true"></i>
+                <div>
+                  <div class="payment-option__title">Bank transfer</div>
+                  <div class="payment-option__desc">No extra fee · Arrives in 1–2 business days</div>
+                </div>
+                <div class="payment-option__badge payment-option__badge--recommended">Recommended</div>
+              </div>
+            </label>
+
+            <label class="payment-option" id="opt-card">
+              <input type="radio" name="payment-method" value="card" class="payment-option__radio">
+              <div class="payment-option__content">
+                <i class="fa-solid fa-credit-card payment-option__icon" aria-hidden="true"></i>
+                <div>
+                  <div class="payment-option__title">Debit card</div>
+                  <div class="payment-option__desc">+0.4% card processing fee · Instant</div>
+                </div>
+              </div>
+            </label>
+          </div>
+
+          <!-- Bank transfer instructions -->
+          <div class="bank-instructions" id="bank-instructions">
+            <div class="bank-instructions__header">
+              <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+              Bank transfer instructions
+            </div>
+            <p class="bank-instructions__intro">After confirming your transfer, send the exact amount shown below to our secure holding account. Your transfer will be processed as soon as your payment clears.</p>
+            <div class="bank-instructions__details">
+              <div class="bank-detail-row">
+                <span class="bank-detail-row__label">Beneficiary name</span>
+                <span class="bank-detail-row__value">SwiftSend Payments Ltd</span>
+              </div>
+              <div class="bank-detail-row">
+                <span class="bank-detail-row__label">IBAN</span>
+                <span class="bank-detail-row__value bank-detail-row__value--mono">GB29NWBK60161331926819</span>
+              </div>
+              <div class="bank-detail-row">
+                <span class="bank-detail-row__label">BIC / SWIFT</span>
+                <span class="bank-detail-row__value bank-detail-row__value--mono">NWBKGB2L</span>
+              </div>
+              <div class="bank-detail-row">
+                <span class="bank-detail-row__label">Reference</span>
+                <span class="bank-detail-row__value bank-detail-row__value--mono" id="bank-ref-display">Generated after confirmation</span>
+              </div>
+            </div>
+            <div class="bank-instructions__warning">
+              <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>
+              Always include your reference number. Transfers without a reference may be delayed.
+            </div>
+          </div>
+
+          <!-- Card form -->
+          <div class="card-form hidden" id="card-form">
+            <div class="form-group">
+              <label class="form-label" for="card-number">Card number <span class="form-required" aria-hidden="true">*</span></label>
+              <div class="card-input-wrap">
+                <input type="text" id="card-number" class="form-input form-input--mono" placeholder="1234 5678 9012 3456" maxlength="19" autocomplete="cc-number" inputmode="numeric">
+                <div class="card-icons" aria-hidden="true">
+                  <i class="fa-brands fa-cc-visa"></i>
+                  <i class="fa-brands fa-cc-mastercard"></i>
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="card-expiry">Expiry date <span class="form-required" aria-hidden="true">*</span></label>
+                <input type="text" id="card-expiry" class="form-input form-input--mono" placeholder="MM / YY" maxlength="7" autocomplete="cc-exp">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="card-cvc">CVC <span class="form-required" aria-hidden="true">*</span></label>
+                <input type="text" id="card-cvc" class="form-input form-input--mono" placeholder="123" maxlength="4" autocomplete="cc-csc" inputmode="numeric">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="card-name">Name on card <span class="form-required" aria-hidden="true">*</span></label>
+              <input type="text" id="card-name" class="form-input" placeholder="e.g. Alex Johnson" autocomplete="cc-name">
+            </div>
+          </div>
+
+          <div class="transfer-step__actions transfer-step__actions--row">
+            <button type="button" class="btn btn--ghost btn--lg" id="step3-back">
+              <i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Back
+            </button>
+            <button type="button" class="btn btn--primary btn--lg" id="step3-next">
+              Review transfer <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+            </button>
+          </div>
+        </section>
+
+        <!-- Step 4: Review & Confirm -->
+        <section class="transfer-step hidden" id="step-4" aria-labelledby="step4-heading">
+          <h2 class="transfer-step__title" id="step4-heading">
+            <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+            Review your transfer
+          </h2>
+          <p class="transfer-step__subtitle">Double-check all the details before confirming. Once sent, transfers cannot be cancelled.</p>
+
+          <!-- Transfer path diagram -->
+          <div class="transfer-path" aria-label="Transfer journey">
+            <div class="transfer-path__end">
+              <div class="transfer-path__icon transfer-path__icon--you">
+                <i class="fa-solid fa-user" aria-hidden="true"></i>
+              </div>
+              <div class="transfer-path__label">You</div>
+              <div class="transfer-path__amount" id="tp-send-amount">--</div>
+            </div>
+            <div class="transfer-path__line" aria-hidden="true">
+              <div class="transfer-path__arrow">
+                <i class="fa-solid fa-bolt"></i>
+                <span class="transfer-path__time" id="tp-delivery">--</span>
+              </div>
+            </div>
+            <div class="transfer-path__end">
+              <div class="transfer-path__icon transfer-path__icon--recipient">
+                <i class="fa-solid fa-user-check" aria-hidden="true"></i>
+              </div>
+              <div class="transfer-path__label" id="tp-recipient-name">Recipient</div>
+              <div class="transfer-path__amount" id="tp-recv-amount">--</div>
+            </div>
+          </div>
+
+          <!-- Review table -->
+          <table class="review-table" aria-label="Transfer summary">
+            <tbody>
+              <tr class="review-table__row">
+                <th class="review-table__label" scope="row">You send</th>
+                <td class="review-table__value" id="rv-send-amount">--</td>
+              </tr>
+              <tr class="review-table__row">
+                <th class="review-table__label" scope="row">Total fees</th>
+                <td class="review-table__value" id="rv-total-fee">--</td>
+              </tr>
+              <tr class="review-table__row">
+                <th class="review-table__label" scope="row">Exchange rate</th>
+                <td class="review-table__value" id="rv-rate">--</td>
+              </tr>
+              <tr class="review-table__row review-table__row--highlight">
+                <th class="review-table__label" scope="row">Recipient gets</th>
+                <td class="review-table__value review-table__value--large" id="rv-recv-amount">--</td>
+              </tr>
+              <tr class="review-table__row">
+                <th class="review-table__label" scope="row">Recipient name</th>
+                <td class="review-table__value" id="rv-recipient-name">--</td>
+              </tr>
+              <tr class="review-table__row">
+                <th class="review-table__label" scope="row">Recipient bank</th>
+                <td class="review-table__value" id="rv-recipient-bank">--</td>
+              </tr>
+              <tr class="review-table__row">
+                <th class="review-table__label" scope="row">Account / IBAN</th>
+                <td class="review-table__value review-table__value--mono" id="rv-account">--</td>
+              </tr>
+              <tr class="review-table__row">
+                <th class="review-table__label" scope="row">Payment method</th>
+                <td class="review-table__value" id="rv-payment-method">--</td>
+              </tr>
+              <tr class="review-table__row">
+                <th class="review-table__label" scope="row">Estimated delivery</th>
+                <td class="review-table__value" id="rv-delivery">--</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <label class="terms-checkbox" for="terms-accept">
+            <input type="checkbox" id="terms-accept" class="terms-checkbox__input" required>
+            <span class="terms-checkbox__label">
+              I confirm all details are correct and I agree to the
+              <a href="#" class="link">Terms of Service</a> and
+              <a href="#" class="link">Privacy Policy</a>.
+            </span>
+          </label>
+
+          <div id="confirm-error" class="form-error hidden" role="alert">
+            <i class="fa-solid fa-circle-exclamation" aria-hidden="true"></i>
+            <span id="confirm-error-msg">Please accept the terms to continue.</span>
+          </div>
+
+          <div class="transfer-step__actions transfer-step__actions--row">
+            <button type="button" class="btn btn--ghost btn--lg" id="step4-back">
+              <i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Back
+            </button>
+            <button type="button" class="btn btn--primary btn--lg" id="confirm-transfer-btn">
+              <i class="fa-solid fa-paper-plane" aria-hidden="true"></i> Confirm &amp; send
+            </button>
+          </div>
+        </section>
+
+      </div><!-- /transfer-flow -->
+
+      <!-- Right: summary sidebar -->
+      <aside class="transfer-sidebar" aria-label="Transfer summary">
+        <div class="transfer-sidebar__card">
+          <div class="transfer-sidebar__header">
+            <i class="fa-solid fa-file-invoice" aria-hidden="true"></i>
+            Transfer summary
+          </div>
+          <div class="transfer-sidebar__body" id="sidebar-summary">
+            <div class="sidebar-row">
+              <span>You send</span>
+              <span id="sb-send">--</span>
+            </div>
+            <div class="sidebar-row">
+              <span>Fee</span>
+              <span id="sb-fee">--</span>
+            </div>
+            <div class="sidebar-row">
+              <span>Rate</span>
+              <span id="sb-rate">--</span>
+            </div>
+            <div class="sidebar-row sidebar-row--divider"></div>
+            <div class="sidebar-row sidebar-row--highlight">
+              <span>Recipient gets</span>
+              <span id="sb-recv">--</span>
+            </div>
+            <div class="sidebar-row">
+              <span>Delivery</span>
+              <span id="sb-delivery">--</span>
+            </div>
+          </div>
+          <div class="transfer-sidebar__trust">
+            <div class="trust-pill"><i class="fa-solid fa-lock" aria-hidden="true"></i> Secure transfer</div>
+            <div class="trust-pill"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Funds protected</div>
+          </div>
+        </div>
+
+        <div class="transfer-sidebar__help">
+          <i class="fa-solid fa-headset" aria-hidden="true"></i>
+          <div>
+            <div class="transfer-sidebar__help-title">Need help?</div>
+            <div class="transfer-sidebar__help-text">Our support team is available 24/7 via live chat or email.</div>
+          </div>
+        </div>
+      </aside>
+
+    </div><!-- /layout -->
+
+    <!-- Success screen -->
+    <div class="success-screen hidden" id="success-screen" role="alert" aria-live="polite">
+      <div class="success-screen__icon" aria-hidden="true">
+        <i class="fa-solid fa-circle-check"></i>
+      </div>
+      <h1 class="success-screen__title">Transfer initiated!</h1>
+      <p class="success-screen__subtitle">Your money is on its way. We'll send you an email confirmation shortly.</p>
+      <div class="success-screen__ref">
+        <div class="success-screen__ref-label">Your transfer reference</div>
+        <div class="success-screen__ref-value" id="success-ref">--</div>
+        <button class="btn btn--ghost btn--sm" id="copy-ref-btn" aria-label="Copy reference number">
+          <i class="fa-solid fa-copy" aria-hidden="true"></i> Copy
+        </button>
+      </div>
+      <div class="success-screen__actions">
+        <a href="/track.html" class="btn btn--primary btn--lg" id="track-transfer-link">
+          <i class="fa-solid fa-route" aria-hidden="true"></i> Track your transfer
+        </a>
+        <a href="/dashboard.html" class="btn btn--ghost btn--lg">Go to dashboard</a>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <div class="footer__brand">SwiftSend</div>
+        <p class="footer__tagline">Fast, transparent international money transfers. No hidden fees. Real exchange rates.</p>
+      </div>
+      <div>
+        <div class="footer__heading">Product</div>
+        <div class="footer__links">
+          <a href="/send.html" class="footer__link">Send money</a>
+          <a href="/pricing.html" class="footer__link">Pricing</a>
+          <a href="/track.html" class="footer__link">Track transfer</a>
+          <a href="/dashboard.html" class="footer__link">Dashboard</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer__heading">Company</div>
+        <div class="footer__links">
+          <a href="#" class="footer__link">About</a>
+          <a href="#" class="footer__link">Blog</a>
+          <a href="#" class="footer__link">Careers</a>
+          <a href="#" class="footer__link">Press</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer__heading">Legal</div>
+        <div class="footer__links">
+          <a href="#" class="footer__link">Privacy</a>
+          <a href="#" class="footer__link">Terms</a>
+          <a href="#" class="footer__link">Cookies</a>
+          <a href="#" class="footer__link">Licenses</a>
+        </div>
+      </div>
+    </div>
+    <p class="footer__disclaimer">SwiftSend is a demonstration project. It is not a regulated financial institution and does not process real money transfers. Exchange rates are provided by Frankfurter API (European Central Bank data).</p>
+    <div class="footer__bottom">
+      <span>© 2025 SwiftSend. All rights reserved.</span>
+      <span>Built with FastAPI · PostgreSQL · Redis · Rust</span>
+    </div>
+  </div>
+</footer>
+
+<script type="module">
+  import { initNav, requireAuth } from './js/main.js';
+  import { initTransferFlow } from './js/transfer.js';
+  document.addEventListener('DOMContentLoaded', () => {
+    initNav();
+    requireAuth();
+    initTransferFlow();
+  });
+</script>
+</body>
+</html>

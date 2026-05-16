@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Track your SwiftSend money transfer in real time. Enter your reference number to see the current status.">
+  <title>Track Transfer – SwiftSend</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+
+<header class="nav" role="banner">
+  <div class="container nav__inner">
+    <a href="/index.html" class="nav__logo" aria-label="SwiftSend home">
+      <svg class="nav__logo-icon" width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+        <circle cx="18" cy="18" r="18" fill="#00B9A9"/>
+        <path d="M10 18 L18 10 L26 18 L18 26 Z" fill="white"/>
+        <path d="M18 10 L26 18" stroke="#9FE870" stroke-width="2.5" stroke-linecap="round"/>
+      </svg>
+      <span class="nav__logo-text">SwiftSend</span>
+    </a>
+    <nav class="nav__links" aria-label="Primary navigation">
+      <a href="/index.html" class="nav__link">Home</a>
+      <a href="/pricing.html" class="nav__link">Pricing</a>
+      <a href="/send.html" class="nav__link">Send money</a>
+      <a href="/track.html" class="nav__link">Track</a>
+    </nav>
+    <div class="nav__actions">
+      <div id="nav-anon">
+        <a href="/login.html" class="btn btn--ghost btn--sm">Log in</a>
+        <a href="/register.html" class="btn btn--primary btn--sm">Get started</a>
+      </div>
+      <div id="nav-user" class="hidden">
+        <button class="nav__balance-pill" id="nav-balance" aria-label="Your balance">
+          <i class="fa-solid fa-wallet" aria-hidden="true"></i>
+          <span id="nav-balance-amount">--</span>
+        </button>
+        <div class="nav__avatar-wrap">
+          <button class="nav__avatar" id="nav-avatar-btn" aria-label="Account menu" aria-expanded="false" aria-controls="nav-dropdown">
+            <span id="nav-avatar-initials">--</span>
+          </button>
+          <div class="nav__dropdown hidden" id="nav-dropdown" role="menu">
+            <div class="nav__dropdown-header">
+              <span class="nav__dropdown-name" id="nav-dropdown-name">--</span>
+              <span class="nav__dropdown-email" id="nav-dropdown-email">--</span>
+            </div>
+            <div class="nav__dropdown-divider" role="separator"></div>
+            <a href="/dashboard.html" class="nav__dropdown-item" role="menuitem"><i class="fa-solid fa-gauge" aria-hidden="true"></i> Dashboard</a>
+            <a href="/send.html" class="nav__dropdown-item" role="menuitem"><i class="fa-solid fa-paper-plane" aria-hidden="true"></i> New transfer</a>
+            <a href="/track.html" class="nav__dropdown-item" role="menuitem"><i class="fa-solid fa-route" aria-hidden="true"></i> Track transfer</a>
+            <div class="nav__dropdown-divider" role="separator"></div>
+            <button class="nav__dropdown-item nav__dropdown-item--danger" id="nav-logout" role="menuitem"><i class="fa-solid fa-right-from-bracket" aria-hidden="true"></i> Log out</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="nav__hamburger" id="nav-hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-mobile-menu">
+      <span class="nav__hamburger-bar"></span>
+      <span class="nav__hamburger-bar"></span>
+      <span class="nav__hamburger-bar"></span>
+    </button>
+  </div>
+  <div class="nav__mobile-menu hidden" id="nav-mobile-menu" role="dialog" aria-label="Mobile navigation">
+    <div class="nav__mobile-links">
+      <a href="/index.html" class="nav__mobile-link">Home</a>
+      <a href="/pricing.html" class="nav__mobile-link">Pricing</a>
+      <a href="/send.html" class="nav__mobile-link">Send money</a>
+      <a href="/track.html" class="nav__mobile-link">Track</a>
+    </div>
+    <div class="nav__mobile-actions">
+      <a href="/login.html" class="btn btn--ghost btn--full">Log in</a>
+      <a href="/register.html" class="btn btn--primary btn--full">Get started</a>
+    </div>
+  </div>
+</header>
+
+<main class="page-track">
+  <div class="container">
+
+    <!-- Page heading -->
+    <div class="page-track__header">
+      <h1 class="page-track__title">Track your transfer</h1>
+      <p class="page-track__subtitle">
+        Enter the reference number from your confirmation email to see the real-time status of your transfer. No account required.
+      </p>
+    </div>
+
+    <!-- Search form -->
+    <div class="track-search-card">
+      <form id="track-form" class="track-form" novalidate>
+        <div class="track-form__inner">
+          <label class="visually-hidden" for="ref-input">Transfer reference number</label>
+          <div class="track-form__input-wrap">
+            <i class="fa-solid fa-magnifying-glass track-form__icon" aria-hidden="true"></i>
+            <input
+              type="text"
+              id="ref-input"
+              class="track-form__input"
+              placeholder="e.g. SS-20250516-A4B2F"
+              maxlength="24"
+              autocomplete="off"
+              autocapitalize="characters"
+              spellcheck="false"
+              aria-label="Transfer reference number"
+            >
+          </div>
+          <button type="submit" class="btn btn--primary btn--lg track-form__btn">
+            <i class="fa-solid fa-route" aria-hidden="true"></i>
+            Track
+          </button>
+        </div>
+        <div class="track-form__hint">
+          Your reference number looks like <code class="code-sample">SS-20250516-A4B2F</code>. It's in your confirmation email.
+        </div>
+      </form>
+    </div>
+
+    <!-- Error state -->
+    <div class="track-error hidden" id="track-error" role="alert" aria-live="assertive">
+      <div class="track-error__inner">
+        <div class="track-error__icon" aria-hidden="true">
+          <i class="fa-solid fa-circle-exclamation"></i>
+        </div>
+        <div>
+          <div class="track-error__title">Transfer not found</div>
+          <p class="track-error__desc">
+            We couldn't find a transfer with that reference number. Please double-check the reference from your confirmation email and try again.
+          </p>
+          <p class="track-error__help">
+            Reference numbers are case-insensitive and look like <strong>SS-20250516-A4B2F</strong>.
+            If you're still having trouble, <a href="#" class="link">contact our support team</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Results -->
+    <div class="track-result hidden" id="track-result" aria-live="polite">
+
+      <!-- Transfer summary card -->
+      <div class="track-result__summary-card">
+        <div class="track-result__summary-header">
+          <div>
+            <div class="track-result__ref" id="track-result-ref">--</div>
+            <div class="track-result__date" id="track-result-date">--</div>
+          </div>
+          <div class="status-badge" id="track-status-badge" aria-label="Transfer status">
+            <span class="status-badge__dot" aria-hidden="true"></span>
+            <span class="status-badge__label" id="track-status-label">--</span>
+          </div>
+        </div>
+        <div class="track-result__amounts">
+          <div class="track-result__amount-block">
+            <div class="track-result__amount-label">You sent</div>
+            <div class="track-result__amount-value" id="track-send-amount">--</div>
+          </div>
+          <div class="track-result__arrow" aria-hidden="true">
+            <i class="fa-solid fa-arrow-right"></i>
+          </div>
+          <div class="track-result__amount-block">
+            <div class="track-result__amount-label">Recipient gets</div>
+            <div class="track-result__amount-value track-result__amount-value--green" id="track-recv-amount">--</div>
+          </div>
+        </div>
+        <div class="track-result__meta">
+          <div class="track-result__meta-item">
+            <i class="fa-solid fa-user" aria-hidden="true"></i>
+            <span id="track-recipient-name">--</span>
+          </div>
+          <div class="track-result__meta-item">
+            <i class="fa-solid fa-scale-balanced" aria-hidden="true"></i>
+            <span id="track-rate">--</span>
+          </div>
+          <div class="track-result__meta-item">
+            <i class="fa-solid fa-clock" aria-hidden="true"></i>
+            <span id="track-eta">--</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Timeline -->
+      <div class="track-timeline" aria-label="Transfer progress timeline">
+        <h2 class="track-timeline__title">Transfer progress</h2>
+
+        <ol class="timeline" aria-label="Steps in transfer journey">
+
+          <li class="timeline-item" id="timeline-pending" data-step="pending">
+            <div class="timeline-item__connector" aria-hidden="true"></div>
+            <div class="timeline-item__marker" aria-hidden="true">
+              <span class="timeline-item__icon">
+                <i class="fa-solid fa-hourglass-start"></i>
+              </span>
+            </div>
+            <div class="timeline-item__content">
+              <div class="timeline-item__title">Transfer initiated</div>
+              <p class="timeline-item__desc">Your transfer has been received. We're waiting for your payment to clear before processing.</p>
+              <div class="timeline-item__time" id="timeline-pending-time"></div>
+            </div>
+          </li>
+
+          <li class="timeline-item" id="timeline-processing" data-step="processing">
+            <div class="timeline-item__connector" aria-hidden="true"></div>
+            <div class="timeline-item__marker" aria-hidden="true">
+              <span class="timeline-item__icon">
+                <i class="fa-solid fa-gear"></i>
+              </span>
+            </div>
+            <div class="timeline-item__content">
+              <div class="timeline-item__title">Processing</div>
+              <p class="timeline-item__desc">Payment confirmed. We're converting your funds at the locked exchange rate and sending them to the recipient's bank.</p>
+              <div class="timeline-item__time" id="timeline-processing-time"></div>
+            </div>
+          </li>
+
+          <li class="timeline-item" id="timeline-sent" data-step="sent">
+            <div class="timeline-item__connector" aria-hidden="true"></div>
+            <div class="timeline-item__marker" aria-hidden="true">
+              <span class="timeline-item__icon">
+                <i class="fa-solid fa-paper-plane"></i>
+              </span>
+            </div>
+            <div class="timeline-item__content">
+              <div class="timeline-item__title">Funds sent to bank</div>
+              <p class="timeline-item__desc">The funds have left SwiftSend and are in transit to the recipient's bank. The bank is processing the final credit.</p>
+              <div class="timeline-item__time" id="timeline-sent-time"></div>
+            </div>
+          </li>
+
+          <li class="timeline-item" id="timeline-completed" data-step="completed">
+            <div class="timeline-item__connector" aria-hidden="true"></div>
+            <div class="timeline-item__marker" aria-hidden="true">
+              <span class="timeline-item__icon">
+                <i class="fa-solid fa-circle-check"></i>
+              </span>
+            </div>
+            <div class="timeline-item__content">
+              <div class="timeline-item__title">Delivered</div>
+              <p class="timeline-item__desc">Your money has been successfully credited to the recipient's bank account. Transfer complete!</p>
+              <div class="timeline-item__time" id="timeline-completed-time"></div>
+            </div>
+          </li>
+
+        </ol>
+      </div>
+
+      <!-- Actions after tracking -->
+      <div class="track-result__actions">
+        <a href="/send.html" class="btn btn--primary">
+          <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+          Send another transfer
+        </a>
+        <button class="btn btn--ghost" id="track-share-btn">
+          <i class="fa-solid fa-share-nodes" aria-hidden="true"></i>
+          Share tracking link
+        </button>
+      </div>
+
+    </div><!-- /track-result -->
+
+    <!-- FAQ section -->
+    <section class="track-faq" aria-labelledby="track-faq-heading">
+      <h2 class="track-faq__title" id="track-faq-heading">Frequently asked questions</h2>
+      <div class="faq-list">
+
+        <details class="faq-item">
+          <summary class="faq-item__question">
+            <span>Where do I find my reference number?</span>
+            <i class="fa-solid fa-chevron-down faq-item__chevron" aria-hidden="true"></i>
+          </summary>
+          <div class="faq-item__answer">
+            Your transfer reference number is sent in the confirmation email immediately after you complete a transfer. It starts with <strong>SS-</strong> followed by the date and a unique code. You can also find it in your <a href="/dashboard.html" class="link">dashboard</a> under Transfer history.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-item__question">
+            <span>How long does an international transfer take?</span>
+            <i class="fa-solid fa-chevron-down faq-item__chevron" aria-hidden="true"></i>
+          </summary>
+          <div class="faq-item__answer">
+            95% of our transfers arrive the same business day. The exact time depends on the destination country and the recipient's bank. SEPA transfers typically arrive within 2–4 hours. USD and GBP transfers to most countries settle within 24 hours. Delivery estimates are always shown before you confirm a transfer.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-item__question">
+            <span>My transfer is still showing as "Processing" — is something wrong?</span>
+            <i class="fa-solid fa-chevron-down faq-item__chevron" aria-hidden="true"></i>
+          </summary>
+          <div class="faq-item__answer">
+            Not necessarily. Processing times can be longer during weekends, public holidays, or if the recipient's bank requires additional verification. If your transfer has been in the "Processing" state for more than 2 business days, please <a href="#" class="link">contact our support team</a> with your reference number.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-item__question">
+            <span>Can I cancel a transfer?</span>
+            <i class="fa-solid fa-chevron-down faq-item__chevron" aria-hidden="true"></i>
+          </summary>
+          <div class="faq-item__answer">
+            You may be able to cancel a transfer if it is still in "Pending" status and we have not yet received your payment. Once a transfer moves to "Processing", cancellation is generally not possible. Please <a href="#" class="link">contact support immediately</a> if you need to cancel a transfer.
+          </div>
+        </details>
+
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <div class="footer__brand">SwiftSend</div>
+        <p class="footer__tagline">Fast, transparent international money transfers. No hidden fees. Real exchange rates.</p>
+      </div>
+      <div>
+        <div class="footer__heading">Product</div>
+        <div class="footer__links">
+          <a href="/send.html" class="footer__link">Send money</a>
+          <a href="/pricing.html" class="footer__link">Pricing</a>
+          <a href="/track.html" class="footer__link">Track transfer</a>
+          <a href="/dashboard.html" class="footer__link">Dashboard</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer__heading">Company</div>
+        <div class="footer__links">
+          <a href="#" class="footer__link">About</a>
+          <a href="#" class="footer__link">Blog</a>
+          <a href="#" class="footer__link">Careers</a>
+          <a href="#" class="footer__link">Press</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer__heading">Legal</div>
+        <div class="footer__links">
+          <a href="#" class="footer__link">Privacy</a>
+          <a href="#" class="footer__link">Terms</a>
+          <a href="#" class="footer__link">Cookies</a>
+          <a href="#" class="footer__link">Licenses</a>
+        </div>
+      </div>
+    </div>
+    <p class="footer__disclaimer">SwiftSend is a demonstration project. It is not a regulated financial institution and does not process real money transfers. Exchange rates are provided by Frankfurter API (European Central Bank data).</p>
+    <div class="footer__bottom">
+      <span>© 2025 SwiftSend. All rights reserved.</span>
+      <span>Built with FastAPI · PostgreSQL · Redis · Rust</span>
+    </div>
+  </div>
+</footer>
+
+<script type="module">
+  import { initNav } from './js/main.js';
+  import { api } from './js/api-client.js';
+  import { formatDate } from './js/main.js';
+  document.addEventListener('DOMContentLoaded', () => {
+    initNav();
+    const form = document.getElementById('track-form');
+    form?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const ref = document.getElementById('ref-input').value.trim().toUpperCase();
+      document.getElementById('track-error').classList.add('hidden');
+      document.getElementById('track-result').classList.add('hidden');
+      if (!ref) return;
+      try {
+        const t = await api.transfers.get(ref);
+        renderTimeline(t);
+        document.getElementById('track-result').classList.remove('hidden');
+      } catch {
+        document.getElementById('track-error').classList.remove('hidden');
+      }
+    });
+    const refFromUrl = new URLSearchParams(window.location.search).get('ref');
+    if (refFromUrl) {
+      document.getElementById('ref-input').value = refFromUrl;
+      document.getElementById('track-form').dispatchEvent(new Event('submit'));
+    }
+  });
+  function renderTimeline(t) {
+    const steps = ['pending','processing','completed'];
+    const statusOrder = ['pending','processing','completed','failed'];
+    const currentIdx = statusOrder.indexOf(t.status);
+    const nodes = document.querySelectorAll('.timeline-item');
+    nodes.forEach((node, i) => {
+      node.classList.remove('is-done','is-active');
+      if (i < currentIdx) node.classList.add('is-done');
+      else if (i === currentIdx && t.status !== 'failed') node.classList.add('is-active');
+    });
+  }
+</script>
+</body>
+</html>

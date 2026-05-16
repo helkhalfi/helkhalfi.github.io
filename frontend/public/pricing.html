@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SwiftSend pricing — transparent fees, no hidden charges. See our fee schedule and compare us to banks and traditional wire services.">
+  <title>Pricing – SwiftSend</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+
+<header class="nav" role="banner">
+  <div class="container nav__inner">
+    <a href="/index.html" class="nav__logo" aria-label="SwiftSend home">
+      <svg class="nav__logo-icon" width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+        <circle cx="18" cy="18" r="18" fill="#00B9A9"/>
+        <path d="M10 18 L18 10 L26 18 L18 26 Z" fill="white"/>
+        <path d="M18 10 L26 18" stroke="#9FE870" stroke-width="2.5" stroke-linecap="round"/>
+      </svg>
+      <span class="nav__logo-text">SwiftSend</span>
+    </a>
+    <nav class="nav__links" aria-label="Primary navigation">
+      <a href="/index.html" class="nav__link">Home</a>
+      <a href="/pricing.html" class="nav__link">Pricing</a>
+      <a href="/send.html" class="nav__link">Send money</a>
+      <a href="/track.html" class="nav__link">Track</a>
+    </nav>
+    <div class="nav__actions">
+      <div id="nav-anon">
+        <a href="/login.html" class="btn btn--ghost btn--sm">Log in</a>
+        <a href="/register.html" class="btn btn--primary btn--sm">Get started</a>
+      </div>
+      <div id="nav-user" class="hidden">
+        <button class="nav__balance-pill" id="nav-balance" aria-label="Your balance">
+          <i class="fa-solid fa-wallet" aria-hidden="true"></i>
+          <span id="nav-balance-amount">--</span>
+        </button>
+        <div class="nav__avatar-wrap">
+          <button class="nav__avatar" id="nav-avatar-btn" aria-label="Account menu" aria-expanded="false" aria-controls="nav-dropdown">
+            <span id="nav-avatar-initials">--</span>
+          </button>
+          <div class="nav__dropdown hidden" id="nav-dropdown" role="menu">
+            <div class="nav__dropdown-header">
+              <span class="nav__dropdown-name" id="nav-dropdown-name">--</span>
+              <span class="nav__dropdown-email" id="nav-dropdown-email">--</span>
+            </div>
+            <div class="nav__dropdown-divider" role="separator"></div>
+            <a href="/dashboard.html" class="nav__dropdown-item" role="menuitem"><i class="fa-solid fa-gauge" aria-hidden="true"></i> Dashboard</a>
+            <a href="/send.html" class="nav__dropdown-item" role="menuitem"><i class="fa-solid fa-paper-plane" aria-hidden="true"></i> New transfer</a>
+            <a href="/track.html" class="nav__dropdown-item" role="menuitem"><i class="fa-solid fa-route" aria-hidden="true"></i> Track transfer</a>
+            <div class="nav__dropdown-divider" role="separator"></div>
+            <button class="nav__dropdown-item nav__dropdown-item--danger" id="nav-logout" role="menuitem"><i class="fa-solid fa-right-from-bracket" aria-hidden="true"></i> Log out</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="nav__hamburger" id="nav-hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-mobile-menu">
+      <span class="nav__hamburger-bar"></span>
+      <span class="nav__hamburger-bar"></span>
+      <span class="nav__hamburger-bar"></span>
+    </button>
+  </div>
+  <div class="nav__mobile-menu hidden" id="nav-mobile-menu" role="dialog" aria-label="Mobile navigation">
+    <div class="nav__mobile-links">
+      <a href="/index.html" class="nav__mobile-link">Home</a>
+      <a href="/pricing.html" class="nav__mobile-link">Pricing</a>
+      <a href="/send.html" class="nav__mobile-link">Send money</a>
+      <a href="/track.html" class="nav__mobile-link">Track</a>
+    </div>
+    <div class="nav__mobile-actions">
+      <a href="/login.html" class="btn btn--ghost btn--full">Log in</a>
+      <a href="/register.html" class="btn btn--primary btn--full">Get started</a>
+    </div>
+  </div>
+</header>
+
+<main class="page-pricing">
+
+  <!-- Page hero -->
+  <section class="pricing-hero" aria-labelledby="pricing-hero-heading">
+    <div class="container pricing-hero__inner">
+      <div class="pricing-hero__badge">
+        <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+        No monthly fees. No account minimum. No surprises.
+      </div>
+      <h1 class="pricing-hero__title" id="pricing-hero-heading">Simple, transparent pricing</h1>
+      <p class="pricing-hero__subtitle">
+        We charge a small fee so we can give you the real mid-market exchange rate. That's it. No markup on the rate, no hidden costs — just one honest fee shown before you send.
+      </p>
+    </div>
+  </section>
+
+  <div class="container">
+
+    <!-- Fee formula card -->
+    <section class="fee-formula-section" aria-labelledby="formula-heading">
+      <div class="fee-formula-card">
+        <div class="fee-formula-card__header">
+          <h2 class="fee-formula-card__title" id="formula-heading">
+            <i class="fa-solid fa-function" aria-hidden="true"></i>
+            How our fee is calculated
+          </h2>
+          <p class="fee-formula-card__subtitle">Your total fee is made up of two parts — a variable percentage and a small fixed amount.</p>
+        </div>
+
+        <div class="fee-formula-card__formula" aria-label="Fee formula">
+          <div class="formula-part">
+            <div class="formula-part__label">Total fee</div>
+            <div class="formula-part__value formula-part__value--result">=</div>
+          </div>
+          <div class="formula-equals" aria-hidden="true">=</div>
+          <div class="formula-part">
+            <div class="formula-part__label">Variable fee</div>
+            <div class="formula-part__value">0.7% of amount</div>
+          </div>
+          <div class="formula-plus" aria-hidden="true">+</div>
+          <div class="formula-part">
+            <div class="formula-part__label">Fixed fee</div>
+            <div class="formula-part__value">currency-dependent</div>
+          </div>
+        </div>
+
+        <div class="fee-formula-card__example" aria-label="Fee calculation example">
+          <div class="fee-example">
+            <div class="fee-example__header">
+              <i class="fa-solid fa-calculator" aria-hidden="true"></i>
+              Example: Sending £1,000 GBP → EUR
+            </div>
+            <div class="fee-example__rows">
+              <div class="fee-example__row">
+                <span>You send</span>
+                <span class="fee-example__val">£1,000.00 GBP</span>
+              </div>
+              <div class="fee-example__row">
+                <span>Variable fee (0.7%)</span>
+                <span class="fee-example__val">−£7.00</span>
+              </div>
+              <div class="fee-example__row">
+                <span>Fixed fee (GBP)</span>
+                <span class="fee-example__val">−£0.50</span>
+              </div>
+              <div class="fee-example__row fee-example__row--divider"></div>
+              <div class="fee-example__row">
+                <span>Amount exchanged</span>
+                <span class="fee-example__val">£992.50 GBP</span>
+              </div>
+              <div class="fee-example__row">
+                <span>Exchange rate (live ECB rate)</span>
+                <span class="fee-example__val">1 GBP = 1.1722 EUR</span>
+              </div>
+              <div class="fee-example__row fee-example__row--highlight">
+                <span>Recipient gets</span>
+                <span class="fee-example__val fee-example__val--green">€1,163.45 EUR</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="fee-formula-card__notes">
+          <div class="fee-formula-note">
+            <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+            <span>Exchange rates are sourced in real time from the <strong>European Central Bank</strong> via the Frankfurter API. The rate is locked at the moment you confirm your transfer.</span>
+          </div>
+          <div class="fee-formula-note">
+            <i class="fa-solid fa-credit-card" aria-hidden="true"></i>
+            <span>Paying by debit or credit card adds a <strong>0.4% card processing fee</strong> on top of the above. Bank transfer funding is always free.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Comparison table -->
+    <section class="comparison-section" aria-labelledby="comparison-heading">
+      <div class="section__header">
+        <h2 class="section__title" id="comparison-heading">How we compare</h2>
+        <p class="section__subtitle">Sending £1,000 to Europe — what does each provider actually cost?</p>
+      </div>
+
+      <div class="comparison-table-wrap" role="region" aria-label="Provider comparison table" tabindex="0">
+        <table class="comparison-table" aria-label="Comparison of money transfer providers">
+          <thead>
+            <tr>
+              <th scope="col" class="comparison-table__th comparison-table__th--provider">Provider</th>
+              <th scope="col" class="comparison-table__th">Exchange rate</th>
+              <th scope="col" class="comparison-table__th">Transfer fee</th>
+              <th scope="col" class="comparison-table__th">Rate markup</th>
+              <th scope="col" class="comparison-table__th comparison-table__th--highlight">Recipient gets</th>
+              <th scope="col" class="comparison-table__th">Delivery</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="comparison-table__row comparison-table__row--winner">
+              <td class="comparison-table__td comparison-table__td--provider">
+                <div class="provider-cell">
+                  <div class="provider-cell__logo provider-cell__logo--swiftsend" aria-hidden="true">
+                    <i class="fa-solid fa-bolt"></i>
+                  </div>
+                  <div>
+                    <div class="provider-cell__name">SwiftSend</div>
+                    <div class="provider-cell__badge">Best value</div>
+                  </div>
+                </div>
+              </td>
+              <td class="comparison-table__td">Mid-market (ECB)</td>
+              <td class="comparison-table__td">£7.50</td>
+              <td class="comparison-table__td comparison-table__td--good">0%</td>
+              <td class="comparison-table__td comparison-table__td--highlight comparison-table__td--good">€1,163.45</td>
+              <td class="comparison-table__td">Same day</td>
+            </tr>
+            <tr class="comparison-table__row">
+              <td class="comparison-table__td comparison-table__td--provider">
+                <div class="provider-cell">
+                  <div class="provider-cell__logo provider-cell__logo--bank" aria-hidden="true">
+                    <i class="fa-solid fa-building-columns"></i>
+                  </div>
+                  <div>
+                    <div class="provider-cell__name">High Street Bank</div>
+                    <div class="provider-cell__sub">e.g. HSBC, Barclays</div>
+                  </div>
+                </div>
+              </td>
+              <td class="comparison-table__td">Bank rate</td>
+              <td class="comparison-table__td">£15–£25</td>
+              <td class="comparison-table__td comparison-table__td--bad">3–5%</td>
+              <td class="comparison-table__td comparison-table__td--highlight comparison-table__td--bad">€1,082–€1,107</td>
+              <td class="comparison-table__td">2–5 days</td>
+            </tr>
+            <tr class="comparison-table__row">
+              <td class="comparison-table__td comparison-table__td--provider">
+                <div class="provider-cell">
+                  <div class="provider-cell__logo provider-cell__logo--wu" aria-hidden="true">
+                    <i class="fa-solid fa-money-bill-transfer"></i>
+                  </div>
+                  <div>
+                    <div class="provider-cell__name">Western Union</div>
+                    <div class="provider-cell__sub">Bank deposit</div>
+                  </div>
+                </div>
+              </td>
+              <td class="comparison-table__td">WU retail rate</td>
+              <td class="comparison-table__td">£3.90</td>
+              <td class="comparison-table__td comparison-table__td--bad">2.5–4%</td>
+              <td class="comparison-table__td comparison-table__td--highlight comparison-table__td--bad">€1,095–€1,120</td>
+              <td class="comparison-table__td">1–3 days</td>
+            </tr>
+            <tr class="comparison-table__row">
+              <td class="comparison-table__td comparison-table__td--provider">
+                <div class="provider-cell">
+                  <div class="provider-cell__logo provider-cell__logo--paypal" aria-hidden="true">
+                    <i class="fa-brands fa-paypal"></i>
+                  </div>
+                  <div>
+                    <div class="provider-cell__name">PayPal</div>
+                    <div class="provider-cell__sub">International transfer</div>
+                  </div>
+                </div>
+              </td>
+              <td class="comparison-table__td">PayPal rate</td>
+              <td class="comparison-table__td">£3.99 + %</td>
+              <td class="comparison-table__td comparison-table__td--bad">3–4%</td>
+              <td class="comparison-table__td comparison-table__td--highlight comparison-table__td--bad">€1,088–€1,105</td>
+              <td class="comparison-table__td">Minutes–3 days</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="comparison-table__disclaimer">
+        <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+        Comparison figures are estimates based on published rates and are provided for illustrative purposes. Actual amounts may vary. Rate markup is the difference between the provider's retail rate and the ECB mid-market rate at time of comparison. Always check the provider's current rates before sending.
+      </p>
+    </section>
+
+    <!-- Currency pair fee table -->
+    <section class="currency-fees-section" aria-labelledby="currency-fees-heading">
+      <div class="section__header">
+        <h2 class="section__title" id="currency-fees-heading">Fee schedule by currency corridor</h2>
+        <p class="section__subtitle">Fixed fees for popular currency pairs. The variable fee of 0.7% applies to all corridors.</p>
+      </div>
+
+      <div class="currency-fees-table-wrap" role="region" aria-label="Currency fee schedule" tabindex="0">
+        <table class="currency-fees-table" aria-label="Fixed fees per currency corridor">
+          <thead>
+            <tr>
+              <th scope="col" class="currency-fees-table__th">Send currency</th>
+              <th scope="col" class="currency-fees-table__th">Receive currency</th>
+              <th scope="col" class="currency-fees-table__th">Fixed fee</th>
+              <th scope="col" class="currency-fees-table__th">Variable fee</th>
+              <th scope="col" class="currency-fees-table__th">Total fee on £1,000</th>
+              <th scope="col" class="currency-fees-table__th">Typical delivery</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="currency-fees-table__row">
+              <td class="currency-fees-table__td">
+                <div class="currency-cell">
+                  <span class="currency-cell__flag" aria-hidden="true">🇬🇧</span>
+                  <span class="currency-cell__code">GBP</span>
+                  <span class="currency-cell__name">British Pound</span>
+                </div>
+              </td>
+              <td class="currency-fees-table__td">
+                <div class="currency-cell">
+                  <span class="currency-cell__flag" aria-hidden="true">🇪🇺</span>
+                  <span class="currency-cell__code">EUR</span>
+                  <span class="currency-cell__name">Euro</span>
+                </div>
+              </td>
+              <td class="currency-fees-table__td currency-fees-table__td--mono">£0.50</td>
+              <td class="currency-fees-table__td">0.7%</td>
+              <td class="currency-fees-table__td currency-fees-table__td--total">£7.50</td>
+              <td class="currency-fees-table__td">
+                <span class="delivery-badge delivery-badge--fast">Same day</span>
+              </td>
+            </tr>
+            <tr class="currency-fees-table__row">
+              <td class="currency-fees-table__td">
+                <div class="currency-cell">
+                  <span class="currency-cell__flag" aria-hidden="true">🇺🇸</span>
+                  <span class="currency-cell__code">USD</span>
+                  <span class="currency-cell__name">US Dollar</span>
+                </div>
+              </td>
+              <td class="currency-fees-table__td">
+                <div class="currency-cell">
+                  <span class="currency-cell__flag" aria-hidden="true">🇬🇧</span>
+                  <span class="currency-cell__code">GBP</span>
+                  <span class="currency-cell__name">British Pound</span>
+                </div>
+              </td>
+              <td class="currency-fees-table__td currency-fees-table__td--mono">$1.00</td>
+              <td class="currency-fees-table__td">0.7%</td>
+              <td class="currency-fees-table__td currency-fees-table__td--total">$8.00</td>
+              <td class="currency-fees-table__td">
+                <span class="delivery-badge delivery-badge--fast">Same day</span>
+              </td>
+            </tr>
+            <tr class="currency-fees-table__row">
+              <td class="currency-fees-table__td">
+                <div class="currency-cell">
+                  <span class="currency-cell__flag" aria-hidden="true">🇪🇺</span>
+                  <span class="currency-cell__code">EUR</span>
+                  <span class="currency-cell__name">Euro</span>
+                </div>
+              </td>
+              <td class="currency-fees-table__td">
+                <div class="currency-cell">
+                  <span class="currency-cell__flag" aria-hidden="true">🇮🇳</span>
+                  <span class="currency-cell__code">INR</span>
+                  <span class="currency-cell__name">Indian Rupee</span>
+                </div>
+              </td>
+              <td class="currency-fees-table__td currency-fees-table__td--mono">€1.50</td>
+              <td class="currency-fees-table__td">0.7%</td>
+              <td class="currency-fees-table__td currency-fees-table__td--total">€8.50</td>
+              <td class="currency-fees-table__td">
+                <span class="delivery-badge delivery-badge--medium">1–2 days</span>
+              </td>
+            </tr>
+            <tr class="currency-fees-table__row">
+              <td class="currency-fees-table__td">
+                <div class="currency-cell">
+                  <span class="currency-cell__flag" aria-hidden="true">🇬🇧</span>
+                  <span class="currency-cell__code">GBP</span>
+                  <span class="currency-cell__name">British Pound</span>
+                </div>
+              </td>
+              <td class="currency-fees-table__td">
+                <div class="currency-cell">
+                  <span class="currency-cell__flag" aria-hidden="true">🇳🇬</span>
+                  <span class="currency-cell__code">NGN</span>
+                  <span class="currency-cell__name">Nigerian Naira</span>
+                </div>
+              </td>
+              <td class="currency-fees-table__td currency-fees-table__td--mono">£2.00</td>
+              <td class="currency-fees-table__td">0.7%</td>
+              <td class="currency-fees-table__td currency-fees-table__td--total">£9.00</td>
+              <td class="currency-fees-table__td">
+                <span class="delivery-badge delivery-badge--medium">1–2 days</span>
+              </td>
+            </tr>
+            <tr class="currency-fees-table__row">
+              <td class="currency-fees-table__td">
+                <div class="currency-cell">
+                  <span class="currency-cell__flag" aria-hidden="true">🇺🇸</span>
+                  <span class="currency-cell__code">USD</span>
+                  <span class="currency-cell__name">US Dollar</span>
+                </div>
+              </td>
+              <td class="currency-fees-table__td">
+                <div class="currency-cell">
+                  <span class="currency-cell__flag" aria-hidden="true">🇲🇽</span>
+                  <span class="currency-cell__code">MXN</span>
+                  <span class="currency-cell__name">Mexican Peso</span>
+                </div>
+              </td>
+              <td class="currency-fees-table__td currency-fees-table__td--mono">$1.50</td>
+              <td class="currency-fees-table__td">0.7%</td>
+              <td class="currency-fees-table__td currency-fees-table__td--total">$8.50</td>
+              <td class="currency-fees-table__td">
+                <span class="delivery-badge delivery-badge--fast">Same day</span>
+              </td>
+            </tr>
+            <tr class="currency-fees-table__row">
+              <td class="currency-fees-table__td">
+                <div class="currency-cell">
+                  <span class="currency-cell__flag" aria-hidden="true">🇦🇺</span>
+                  <span class="currency-cell__code">AUD</span>
+                  <span class="currency-cell__name">Australian Dollar</span>
+                </div>
+              </td>
+              <td class="currency-fees-table__td">
+                <div class="currency-cell">
+                  <span class="currency-cell__flag" aria-hidden="true">🇵🇭</span>
+                  <span class="currency-cell__code">PHP</span>
+                  <span class="currency-cell__name">Philippine Peso</span>
+                </div>
+              </td>
+              <td class="currency-fees-table__td currency-fees-table__td--mono">A$2.00</td>
+              <td class="currency-fees-table__td">0.7%</td>
+              <td class="currency-fees-table__td currency-fees-table__td--total">A$9.00</td>
+              <td class="currency-fees-table__td">
+                <span class="delivery-badge delivery-badge--medium">1–2 days</span>
+              </td>
+            </tr>
+            <tr class="currency-fees-table__row">
+              <td class="currency-fees-table__td">
+                <div class="currency-cell">
+                  <span class="currency-cell__flag" aria-hidden="true">🇨🇦</span>
+                  <span class="currency-cell__code">CAD</span>
+                  <span class="currency-cell__name">Canadian Dollar</span>
+                </div>
+              </td>
+              <td class="currency-fees-table__td">
+                <div class="currency-cell">
+                  <span class="currency-cell__flag" aria-hidden="true">🇮🇳</span>
+                  <span class="currency-cell__code">INR</span>
+                  <span class="currency-cell__name">Indian Rupee</span>
+                </div>
+              </td>
+              <td class="currency-fees-table__td currency-fees-table__td--mono">C$1.50</td>
+              <td class="currency-fees-table__td">0.7%</td>
+              <td class="currency-fees-table__td currency-fees-table__td--total">C$8.50</td>
+              <td class="currency-fees-table__td">
+                <span class="delivery-badge delivery-badge--medium">1–2 days</span>
+              </td>
+            </tr>
+            <tr class="currency-fees-table__row">
+              <td class="currency-fees-table__td">
+                <div class="currency-cell">
+                  <span class="currency-cell__flag" aria-hidden="true">🇸🇬</span>
+                  <span class="currency-cell__code">SGD</span>
+                  <span class="currency-cell__name">Singapore Dollar</span>
+                </div>
+              </td>
+              <td class="currency-fees-table__td">
+                <div class="currency-cell">
+                  <span class="currency-cell__flag" aria-hidden="true">🇨🇳</span>
+                  <span class="currency-cell__code">CNY</span>
+                  <span class="currency-cell__name">Chinese Yuan</span>
+                </div>
+              </td>
+              <td class="currency-fees-table__td currency-fees-table__td--mono">S$1.00</td>
+              <td class="currency-fees-table__td">0.7%</td>
+              <td class="currency-fees-table__td currency-fees-table__td--total">S$8.00</td>
+              <td class="currency-fees-table__td">
+                <span class="delivery-badge delivery-badge--medium">1–2 days</span>
+              </td>
+            </tr>
+            <tr class="currency-fees-table__row">
+              <td class="currency-fees-table__td">
+                <div class="currency-cell">
+                  <span class="currency-cell__flag" aria-hidden="true">🇪🇺</span>
+                  <span class="currency-cell__code">EUR</span>
+                  <span class="currency-cell__name">Euro</span>
+                </div>
+              </td>
+              <td class="currency-fees-table__td">
+                <div class="currency-cell">
+                  <span class="currency-cell__flag" aria-hidden="true">🇧🇷</span>
+                  <span class="currency-cell__code">BRL</span>
+                  <span class="currency-cell__name">Brazilian Real</span>
+                </div>
+              </td>
+              <td class="currency-fees-table__td currency-fees-table__td--mono">€2.00</td>
+              <td class="currency-fees-table__td">0.7%</td>
+              <td class="currency-fees-table__td currency-fees-table__td--total">€9.00</td>
+              <td class="currency-fees-table__td">
+                <span class="delivery-badge delivery-badge--slow">2–3 days</span>
+              </td>
+            </tr>
+            <tr class="currency-fees-table__row">
+              <td class="currency-fees-table__td">
+                <div class="currency-cell">
+                  <span class="currency-cell__flag" aria-hidden="true">🇺🇸</span>
+                  <span class="currency-cell__code">USD</span>
+                  <span class="currency-cell__name">US Dollar</span>
+                </div>
+              </td>
+              <td class="currency-fees-table__td">
+                <div class="currency-cell">
+                  <span class="currency-cell__flag" aria-hidden="true">🇵🇰</span>
+                  <span class="currency-cell__code">PKR</span>
+                  <span class="currency-cell__name">Pakistani Rupee</span>
+                </div>
+              </td>
+              <td class="currency-fees-table__td currency-fees-table__td--mono">$2.00</td>
+              <td class="currency-fees-table__td">0.7%</td>
+              <td class="currency-fees-table__td currency-fees-table__td--total">$9.00</td>
+              <td class="currency-fees-table__td">
+                <span class="delivery-badge delivery-badge--medium">1–2 days</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="currency-fees-section__footnote">
+        Don't see your corridor? We support 30+ currencies. Use the <a href="/index.html" class="link">calculator on our homepage</a> to get a live quote for any supported currency pair.
+      </p>
+    </section>
+
+    <!-- FAQ -->
+    <section class="pricing-faq" aria-labelledby="pricing-faq-heading">
+      <div class="section__header">
+        <h2 class="section__title" id="pricing-faq-heading">Pricing FAQs</h2>
+      </div>
+      <div class="faq-list faq-list--two-col">
+
+        <details class="faq-item">
+          <summary class="faq-item__question">
+            <span>Are there any hidden fees?</span>
+            <i class="fa-solid fa-chevron-down faq-item__chevron" aria-hidden="true"></i>
+          </summary>
+          <div class="faq-item__answer">
+            No. We show you the complete fee — variable + fixed — before you confirm your transfer. We don't add any margin to the exchange rate. The rate you see is the rate you get, sourced directly from the European Central Bank.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-item__question">
+            <span>Is there a minimum or maximum transfer amount?</span>
+            <i class="fa-solid fa-chevron-down faq-item__chevron" aria-hidden="true"></i>
+          </summary>
+          <div class="faq-item__answer">
+            The minimum transfer is £1 (or currency equivalent). The maximum per transfer is £1,000,000. For transfers above £50,000 we may require additional documentation as part of our compliance process.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-item__question">
+            <span>Why is there a fixed fee in addition to the variable fee?</span>
+            <i class="fa-solid fa-chevron-down faq-item__chevron" aria-hidden="true"></i>
+          </summary>
+          <div class="faq-item__answer">
+            The fixed fee covers our banking and network costs for each transaction, which are roughly the same regardless of the amount you send. The variable fee covers our operating costs. Together they're still far lower than the rate markup a bank would charge.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-item__question">
+            <span>Does the fee change if I use a card instead of a bank transfer?</span>
+            <i class="fa-solid fa-chevron-down faq-item__chevron" aria-hidden="true"></i>
+          </summary>
+          <div class="faq-item__answer">
+            Yes. Funding your transfer by debit or credit card adds a 0.4% card processing fee on top of the standard fee. Bank transfer funding is always free. We clearly show the total cost for each payment method before you confirm.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-item__question">
+            <span>Will my recipient's bank charge extra fees?</span>
+            <i class="fa-solid fa-chevron-down faq-item__chevron" aria-hidden="true"></i>
+          </summary>
+          <div class="faq-item__answer">
+            SwiftSend does not charge your recipient's bank any fees. However, in rare cases certain recipient banks may apply their own incoming wire fees. We have no control over this and recommend your recipient checks with their bank beforehand if they are concerned.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-item__question">
+            <span>Do I get a better rate for larger amounts?</span>
+            <i class="fa-solid fa-chevron-down faq-item__chevron" aria-hidden="true"></i>
+          </summary>
+          <div class="faq-item__answer">
+            All customers get the same mid-market exchange rate regardless of amount — there's no tiered pricing. Since the variable fee is a percentage, the fixed fee becomes proportionally smaller on larger transfers, making the effective rate even lower at scale.
+          </div>
+        </details>
+
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="pricing-cta" aria-labelledby="pricing-cta-heading">
+      <div class="pricing-cta__inner">
+        <div class="pricing-cta__icon" aria-hidden="true">
+          <i class="fa-solid fa-paper-plane"></i>
+        </div>
+        <h2 class="pricing-cta__title" id="pricing-cta-heading">Ready to send money the smarter way?</h2>
+        <p class="pricing-cta__subtitle">Join 200,000+ customers already saving on every transfer.</p>
+        <div class="pricing-cta__actions">
+          <a href="/register.html" class="btn btn--primary btn--lg">
+            Create free account <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+          </a>
+          <a href="/index.html" class="btn btn--ghost btn--lg">Calculate my transfer</a>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /container -->
+
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <div class="footer__brand">SwiftSend</div>
+        <p class="footer__tagline">Fast, transparent international money transfers. No hidden fees. Real exchange rates.</p>
+      </div>
+      <div>
+        <div class="footer__heading">Product</div>
+        <div class="footer__links">
+          <a href="/send.html" class="footer__link">Send money</a>
+          <a href="/pricing.html" class="footer__link">Pricing</a>
+          <a href="/track.html" class="footer__link">Track transfer</a>
+          <a href="/dashboard.html" class="footer__link">Dashboard</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer__heading">Company</div>
+        <div class="footer__links">
+          <a href="#" class="footer__link">About</a>
+          <a href="#" class="footer__link">Blog</a>
+          <a href="#" class="footer__link">Careers</a>
+          <a href="#" class="footer__link">Press</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer__heading">Legal</div>
+        <div class="footer__links">
+          <a href="#" class="footer__link">Privacy</a>
+          <a href="#" class="footer__link">Terms</a>
+          <a href="#" class="footer__link">Cookies</a>
+          <a href="#" class="footer__link">Licenses</a>
+        </div>
+      </div>
+    </div>
+    <p class="footer__disclaimer">SwiftSend is a demonstration project. It is not a regulated financial institution and does not process real money transfers. Exchange rates are provided by Frankfurter API (European Central Bank data).</p>
+    <div class="footer__bottom">
+      <span>© 2025 SwiftSend. All rights reserved.</span>
+      <span>Built with FastAPI · PostgreSQL · Redis · Rust</span>
+    </div>
+  </div>
+</footer>
+
+<script type="module">
+  import { initNav } from './js/main.js';
+  document.addEventListener('DOMContentLoaded', () => { initNav(); });
+</script>
+</body>
+</html>

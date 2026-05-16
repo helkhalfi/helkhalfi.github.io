@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Your SwiftSend dashboard — manage transfers, view balances and transaction history.">
+  <title>Dashboard – SwiftSend</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+
+<header class="nav" role="banner">
+  <div class="container nav__inner">
+    <a href="/index.html" class="nav__logo" aria-label="SwiftSend home">
+      <svg class="nav__logo-icon" width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+        <circle cx="18" cy="18" r="18" fill="#00B9A9"/>
+        <path d="M10 18 L18 10 L26 18 L18 26 Z" fill="white"/>
+        <path d="M18 10 L26 18" stroke="#9FE870" stroke-width="2.5" stroke-linecap="round"/>
+      </svg>
+      <span class="nav__logo-text">SwiftSend</span>
+    </a>
+    <nav class="nav__links" aria-label="Primary navigation">
+      <a href="/index.html" class="nav__link">Home</a>
+      <a href="/pricing.html" class="nav__link">Pricing</a>
+      <a href="/send.html" class="nav__link">Send money</a>
+      <a href="/track.html" class="nav__link">Track</a>
+    </nav>
+    <div class="nav__actions">
+      <div id="nav-anon">
+        <a href="/login.html" class="btn btn--ghost btn--sm">Log in</a>
+        <a href="/register.html" class="btn btn--primary btn--sm">Get started</a>
+      </div>
+      <div id="nav-user" class="hidden">
+        <button class="nav__balance-pill" id="nav-balance" aria-label="Your balance">
+          <i class="fa-solid fa-wallet" aria-hidden="true"></i>
+          <span id="nav-balance-amount">--</span>
+        </button>
+        <div class="nav__avatar-wrap">
+          <button class="nav__avatar" id="nav-avatar-btn" aria-label="Account menu" aria-expanded="false" aria-controls="nav-dropdown">
+            <span id="nav-avatar-initials">--</span>
+          </button>
+          <div class="nav__dropdown hidden" id="nav-dropdown" role="menu">
+            <div class="nav__dropdown-header">
+              <span class="nav__dropdown-name" id="nav-dropdown-name">--</span>
+              <span class="nav__dropdown-email" id="nav-dropdown-email">--</span>
+            </div>
+            <div class="nav__dropdown-divider" role="separator"></div>
+            <a href="/dashboard.html" class="nav__dropdown-item" role="menuitem"><i class="fa-solid fa-gauge" aria-hidden="true"></i> Dashboard</a>
+            <a href="/send.html" class="nav__dropdown-item" role="menuitem"><i class="fa-solid fa-paper-plane" aria-hidden="true"></i> New transfer</a>
+            <a href="/track.html" class="nav__dropdown-item" role="menuitem"><i class="fa-solid fa-route" aria-hidden="true"></i> Track transfer</a>
+            <div class="nav__dropdown-divider" role="separator"></div>
+            <button class="nav__dropdown-item nav__dropdown-item--danger" id="nav-logout" role="menuitem"><i class="fa-solid fa-right-from-bracket" aria-hidden="true"></i> Log out</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="nav__hamburger" id="nav-hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-mobile-menu">
+      <span class="nav__hamburger-bar"></span>
+      <span class="nav__hamburger-bar"></span>
+      <span class="nav__hamburger-bar"></span>
+    </button>
+  </div>
+  <div class="nav__mobile-menu hidden" id="nav-mobile-menu" role="dialog" aria-label="Mobile navigation">
+    <div class="nav__mobile-links">
+      <a href="/index.html" class="nav__mobile-link">Home</a>
+      <a href="/pricing.html" class="nav__mobile-link">Pricing</a>
+      <a href="/send.html" class="nav__mobile-link">Send money</a>
+      <a href="/track.html" class="nav__mobile-link">Track</a>
+    </div>
+    <div class="nav__mobile-actions">
+      <a href="/login.html" class="btn btn--ghost btn--full">Log in</a>
+      <a href="/register.html" class="btn btn--primary btn--full">Get started</a>
+    </div>
+  </div>
+</header>
+
+<main class="page-dashboard">
+  <div class="container">
+
+    <!-- Welcome banner -->
+    <div class="welcome-banner hidden" id="welcome-banner" role="status" aria-live="polite">
+      <div class="welcome-banner__inner">
+        <div class="welcome-banner__icon" aria-hidden="true">
+          <i class="fa-solid fa-party-horn"></i>
+        </div>
+        <div>
+          <div class="welcome-banner__title">Welcome to SwiftSend, <span id="welcome-name">there</span>!</div>
+          <div class="welcome-banner__subtitle">Your account is active and ready. Send your first transfer in minutes.</div>
+        </div>
+        <button class="welcome-banner__close" id="welcome-banner-close" aria-label="Dismiss welcome message">
+          <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Dashboard header -->
+    <div class="dashboard-header">
+      <div>
+        <h1 class="dashboard-header__title">Dashboard</h1>
+        <p class="dashboard-header__subtitle">Overview of your account and recent transfers.</p>
+      </div>
+      <div class="dashboard-header__actions">
+        <a href="/send.html" class="btn btn--primary">
+          <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+          New transfer
+        </a>
+        <a href="/track.html" class="btn btn--ghost">
+          <i class="fa-solid fa-route" aria-hidden="true"></i>
+          Track transfer
+        </a>
+      </div>
+    </div>
+
+    <!-- Balance cards -->
+    <div class="balance-cards" id="balance-cards" aria-label="Account balances">
+      <!-- Populated by dashboard.js -->
+      <div class="balance-card balance-card--skeleton" aria-hidden="true">
+        <div class="balance-card__label">Loading…</div>
+        <div class="balance-card__amount">--</div>
+      </div>
+      <div class="balance-card balance-card--skeleton" aria-hidden="true">
+        <div class="balance-card__label">Loading…</div>
+        <div class="balance-card__amount">--</div>
+      </div>
+      <div class="balance-card balance-card--skeleton" aria-hidden="true">
+        <div class="balance-card__label">Loading…</div>
+        <div class="balance-card__amount">--</div>
+      </div>
+    </div>
+
+    <!-- Quick actions -->
+    <div class="quick-actions" aria-label="Quick actions">
+      <div class="quick-actions__header">
+        <h2 class="quick-actions__title">Quick actions</h2>
+      </div>
+      <div class="quick-actions__grid">
+        <a href="/send.html" class="quick-action-card">
+          <div class="quick-action-card__icon" aria-hidden="true">
+            <i class="fa-solid fa-paper-plane"></i>
+          </div>
+          <div class="quick-action-card__label">Send money</div>
+          <div class="quick-action-card__desc">Start a new international transfer</div>
+        </a>
+        <a href="/track.html" class="quick-action-card">
+          <div class="quick-action-card__icon" aria-hidden="true">
+            <i class="fa-solid fa-route"></i>
+          </div>
+          <div class="quick-action-card__label">Track transfer</div>
+          <div class="quick-action-card__desc">Check the status of a transfer</div>
+        </a>
+        <a href="/pricing.html" class="quick-action-card">
+          <div class="quick-action-card__icon" aria-hidden="true">
+            <i class="fa-solid fa-tags"></i>
+          </div>
+          <div class="quick-action-card__label">View pricing</div>
+          <div class="quick-action-card__desc">See fees for all currency routes</div>
+        </a>
+        <button class="quick-action-card" id="qa-support">
+          <div class="quick-action-card__icon" aria-hidden="true">
+            <i class="fa-solid fa-headset"></i>
+          </div>
+          <div class="quick-action-card__label">Get support</div>
+          <div class="quick-action-card__desc">Chat with our 24/7 support team</div>
+        </button>
+      </div>
+    </div>
+
+    <!-- Transfer history -->
+    <section class="transfers-section" aria-labelledby="transfers-heading">
+      <div class="transfers-section__header">
+        <h2 class="transfers-section__title" id="transfers-heading">Transfer history</h2>
+        <div class="transfers-section__controls">
+          <div class="search-box" role="search">
+            <i class="fa-solid fa-magnifying-glass search-box__icon" aria-hidden="true"></i>
+            <input type="search" id="transfers-search" class="search-box__input" placeholder="Search by reference or recipient…" aria-label="Search transfers">
+          </div>
+          <select id="transfers-filter" class="form-select" aria-label="Filter by status">
+            <option value="">All statuses</option>
+            <option value="pending">Pending</option>
+            <option value="processing">Processing</option>
+            <option value="completed">Completed</option>
+            <option value="failed">Failed</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="transfers-table-wrap" role="region" aria-label="Transfer history table" tabindex="0">
+        <table class="transfers-table" aria-live="polite">
+          <thead>
+            <tr>
+              <th scope="col" class="transfers-table__th">Reference</th>
+              <th scope="col" class="transfers-table__th">Recipient</th>
+              <th scope="col" class="transfers-table__th">Amount</th>
+              <th scope="col" class="transfers-table__th">Status</th>
+              <th scope="col" class="transfers-table__th">Date</th>
+              <th scope="col" class="transfers-table__th">Action</th>
+            </tr>
+          </thead>
+          <tbody id="transfers-tbody">
+            <!-- Skeleton rows shown while loading -->
+            <tr class="transfers-table__skeleton-row" aria-hidden="true">
+              <td colspan="6">
+                <div class="skeleton skeleton--row"></div>
+              </td>
+            </tr>
+            <tr class="transfers-table__skeleton-row" aria-hidden="true">
+              <td colspan="6">
+                <div class="skeleton skeleton--row"></div>
+              </td>
+            </tr>
+            <tr class="transfers-table__skeleton-row" aria-hidden="true">
+              <td colspan="6">
+                <div class="skeleton skeleton--row"></div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Empty state -->
+      <div class="transfers-empty hidden" id="transfers-empty" aria-live="polite">
+        <div class="transfers-empty__icon" aria-hidden="true">
+          <i class="fa-solid fa-inbox"></i>
+        </div>
+        <div class="transfers-empty__title">No transfers yet</div>
+        <p class="transfers-empty__text">When you send money, your transfers will appear here.</p>
+        <a href="/send.html" class="btn btn--primary">Send your first transfer</a>
+      </div>
+
+      <!-- Pagination -->
+      <div class="pagination" id="transfers-pagination" aria-label="Transfer history pages">
+        <button class="pagination__btn" id="pagination-prev" aria-label="Previous page" disabled>
+          <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+        </button>
+        <span class="pagination__info" id="pagination-info">Page 1</span>
+        <button class="pagination__btn" id="pagination-next" aria-label="Next page">
+          <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+        </button>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <div class="footer__brand">SwiftSend</div>
+        <p class="footer__tagline">Fast, transparent international money transfers. No hidden fees. Real exchange rates.</p>
+      </div>
+      <div>
+        <div class="footer__heading">Product</div>
+        <div class="footer__links">
+          <a href="/send.html" class="footer__link">Send money</a>
+          <a href="/pricing.html" class="footer__link">Pricing</a>
+          <a href="/track.html" class="footer__link">Track transfer</a>
+          <a href="/dashboard.html" class="footer__link">Dashboard</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer__heading">Company</div>
+        <div class="footer__links">
+          <a href="#" class="footer__link">About</a>
+          <a href="#" class="footer__link">Blog</a>
+          <a href="#" class="footer__link">Careers</a>
+          <a href="#" class="footer__link">Press</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer__heading">Legal</div>
+        <div class="footer__links">
+          <a href="#" class="footer__link">Privacy</a>
+          <a href="#" class="footer__link">Terms</a>
+          <a href="#" class="footer__link">Cookies</a>
+          <a href="#" class="footer__link">Licenses</a>
+        </div>
+      </div>
+    </div>
+    <p class="footer__disclaimer">SwiftSend is a demonstration project. It is not a regulated financial institution and does not process real money transfers. Exchange rates are provided by Frankfurter API (European Central Bank data).</p>
+    <div class="footer__bottom">
+      <span>© 2025 SwiftSend. All rights reserved.</span>
+      <span>Built with FastAPI · PostgreSQL · Redis · Rust</span>
+    </div>
+  </div>
+</footer>
+
+<script type="module">
+  import { initNav, requireAuth } from './js/main.js';
+  import { initDashboard } from './js/dashboard.js';
+  document.addEventListener('DOMContentLoaded', () => {
+    initNav();
+    if (!requireAuth()) return;
+    initDashboard();
+  });
+</script>
+</body>
+</html>

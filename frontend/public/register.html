@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Create a free SwiftSend account and start sending money internationally at the real exchange rate.">
+  <title>Create account – SwiftSend</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body class="body--auth">
+
+<header class="nav" role="banner">
+  <div class="container nav__inner">
+    <a href="/index.html" class="nav__logo" aria-label="SwiftSend home">
+      <svg class="nav__logo-icon" width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+        <circle cx="18" cy="18" r="18" fill="#00B9A9"/>
+        <path d="M10 18 L18 10 L26 18 L18 26 Z" fill="white"/>
+        <path d="M18 10 L26 18" stroke="#9FE870" stroke-width="2.5" stroke-linecap="round"/>
+      </svg>
+      <span class="nav__logo-text">SwiftSend</span>
+    </a>
+    <nav class="nav__links" aria-label="Primary navigation">
+      <a href="/index.html" class="nav__link">Home</a>
+      <a href="/pricing.html" class="nav__link">Pricing</a>
+      <a href="/send.html" class="nav__link">Send money</a>
+      <a href="/track.html" class="nav__link">Track</a>
+    </nav>
+    <div class="nav__actions">
+      <div id="nav-anon">
+        <a href="/login.html" class="btn btn--ghost btn--sm">Log in</a>
+        <a href="/register.html" class="btn btn--primary btn--sm">Get started</a>
+      </div>
+      <div id="nav-user" class="hidden">
+        <button class="nav__balance-pill" id="nav-balance" aria-label="Your balance">
+          <i class="fa-solid fa-wallet" aria-hidden="true"></i>
+          <span id="nav-balance-amount">--</span>
+        </button>
+        <div class="nav__avatar-wrap">
+          <button class="nav__avatar" id="nav-avatar-btn" aria-label="Account menu" aria-expanded="false" aria-controls="nav-dropdown">
+            <span id="nav-avatar-initials">--</span>
+          </button>
+          <div class="nav__dropdown hidden" id="nav-dropdown" role="menu">
+            <div class="nav__dropdown-header">
+              <span class="nav__dropdown-name" id="nav-dropdown-name">--</span>
+              <span class="nav__dropdown-email" id="nav-dropdown-email">--</span>
+            </div>
+            <div class="nav__dropdown-divider" role="separator"></div>
+            <a href="/dashboard.html" class="nav__dropdown-item" role="menuitem"><i class="fa-solid fa-gauge" aria-hidden="true"></i> Dashboard</a>
+            <a href="/send.html" class="nav__dropdown-item" role="menuitem"><i class="fa-solid fa-paper-plane" aria-hidden="true"></i> New transfer</a>
+            <a href="/track.html" class="nav__dropdown-item" role="menuitem"><i class="fa-solid fa-route" aria-hidden="true"></i> Track transfer</a>
+            <div class="nav__dropdown-divider" role="separator"></div>
+            <button class="nav__dropdown-item nav__dropdown-item--danger" id="nav-logout" role="menuitem"><i class="fa-solid fa-right-from-bracket" aria-hidden="true"></i> Log out</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="nav__hamburger" id="nav-hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-mobile-menu">
+      <span class="nav__hamburger-bar"></span>
+      <span class="nav__hamburger-bar"></span>
+      <span class="nav__hamburger-bar"></span>
+    </button>
+  </div>
+  <div class="nav__mobile-menu hidden" id="nav-mobile-menu" role="dialog" aria-label="Mobile navigation">
+    <div class="nav__mobile-links">
+      <a href="/index.html" class="nav__mobile-link">Home</a>
+      <a href="/pricing.html" class="nav__mobile-link">Pricing</a>
+      <a href="/send.html" class="nav__mobile-link">Send money</a>
+      <a href="/track.html" class="nav__mobile-link">Track</a>
+    </div>
+    <div class="nav__mobile-actions">
+      <a href="/login.html" class="btn btn--ghost btn--full">Log in</a>
+      <a href="/register.html" class="btn btn--primary btn--full">Get started</a>
+    </div>
+  </div>
+</header>
+
+<main class="auth-main">
+  <div class="auth-layout auth-layout--register">
+
+    <!-- Left: form -->
+    <div class="auth-panel">
+      <div class="auth-card">
+        <div class="auth-card__header">
+          <h1 class="auth-card__title">Create your free account</h1>
+          <p class="auth-card__subtitle">Join 200,000+ people sending money the smarter way.</p>
+        </div>
+
+        <!-- Perks strip -->
+        <div class="auth-perks" aria-label="Account benefits">
+          <div class="auth-perk">
+            <i class="fa-solid fa-circle-check auth-perk__icon" aria-hidden="true"></i>
+            No monthly fees
+          </div>
+          <div class="auth-perk">
+            <i class="fa-solid fa-circle-check auth-perk__icon" aria-hidden="true"></i>
+            Real exchange rate
+          </div>
+          <div class="auth-perk">
+            <i class="fa-solid fa-circle-check auth-perk__icon" aria-hidden="true"></i>
+            Instant account access
+          </div>
+        </div>
+
+        <!-- Error message -->
+        <div class="form-error hidden" id="register-form-error" role="alert" aria-live="assertive">
+          <i class="fa-solid fa-circle-exclamation" aria-hidden="true"></i>
+          <span id="register-error-msg">Something went wrong. Please check the form and try again.</span>
+        </div>
+
+        <form id="register-form" class="auth-form" novalidate autocomplete="on">
+          <div class="form-group">
+            <label class="form-label" for="full_name">Full name <span class="form-required" aria-hidden="true">*</span></label>
+            <div class="form-input-wrap">
+              <i class="fa-solid fa-user form-input-icon" aria-hidden="true"></i>
+              <input
+                type="text"
+                id="full_name"
+                name="full_name"
+                class="form-input form-input--with-icon"
+                placeholder="e.g. Alex Johnson"
+                autocomplete="name"
+                required
+                aria-required="true"
+              >
+            </div>
+            <div class="form-field-error hidden" id="full-name-error" role="alert"></div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="email">Email address <span class="form-required" aria-hidden="true">*</span></label>
+            <div class="form-input-wrap">
+              <i class="fa-solid fa-envelope form-input-icon" aria-hidden="true"></i>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                class="form-input form-input--with-icon"
+                placeholder="you@example.com"
+                autocomplete="email"
+                required
+                aria-required="true"
+                inputmode="email"
+              >
+            </div>
+            <div class="form-field-error hidden" id="email-error" role="alert"></div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="password">Password <span class="form-required" aria-hidden="true">*</span></label>
+            <div class="form-input-wrap">
+              <i class="fa-solid fa-lock form-input-icon" aria-hidden="true"></i>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                class="form-input form-input--with-icon"
+                placeholder="At least 8 characters"
+                autocomplete="new-password"
+                required
+                aria-required="true"
+                minlength="8"
+                aria-describedby="password-strength-desc"
+              >
+              <button type="button" class="form-input-toggle" id="toggle-password" aria-label="Toggle password visibility">
+                <i class="fa-solid fa-eye" aria-hidden="true"></i>
+              </button>
+            </div>
+            <div class="password-strength" id="password-strength" aria-hidden="true">
+              <div class="password-strength__bar">
+                <div class="password-strength__fill" id="password-strength-fill"></div>
+              </div>
+              <span class="password-strength__label" id="password-strength-label"></span>
+            </div>
+            <div class="form-hint" id="password-strength-desc">
+              Use at least 8 characters. Include numbers and symbols for a stronger password.
+            </div>
+            <div class="form-field-error hidden" id="password-error" role="alert"></div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="confirm_password">Confirm password <span class="form-required" aria-hidden="true">*</span></label>
+            <div class="form-input-wrap">
+              <i class="fa-solid fa-lock form-input-icon" aria-hidden="true"></i>
+              <input
+                type="password"
+                id="confirm_password"
+                name="confirm_password"
+                class="form-input form-input--with-icon"
+                placeholder="Repeat your password"
+                autocomplete="new-password"
+                required
+                aria-required="true"
+                minlength="8"
+              >
+              <button type="button" class="form-input-toggle" id="toggle-confirm-password" aria-label="Toggle confirm password visibility">
+                <i class="fa-solid fa-eye" aria-hidden="true"></i>
+              </button>
+            </div>
+            <div class="form-field-error hidden" id="confirm-password-error" role="alert"></div>
+          </div>
+
+          <label class="form-checkbox" for="marketing-opt-in">
+            <input type="checkbox" id="marketing-opt-in" name="marketing-opt-in" class="form-checkbox__input">
+            <span class="form-checkbox__label">Send me tips on saving money on international transfers (you can unsubscribe any time).</span>
+          </label>
+
+          <button type="submit" class="btn btn--primary btn--full btn--lg" id="register-submit-btn">
+            <span id="register-btn-text">Create free account</span>
+            <span class="btn__spinner hidden" id="register-spinner" aria-hidden="true">
+              <i class="fa-solid fa-circle-notch fa-spin"></i>
+            </span>
+          </button>
+
+          <p class="auth-card__terms">
+            By creating an account you agree to our
+            <a href="#" class="link">Terms of Service</a> and
+            <a href="#" class="link">Privacy Policy</a>.
+          </p>
+        </form>
+
+        <div class="auth-divider" aria-hidden="true"><span>or sign up with</span></div>
+
+        <div class="social-auth">
+          <button class="social-auth__btn" aria-label="Continue with Google">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+              <path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z" fill="#4285F4"/>
+              <path d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18z" fill="#34A853"/>
+              <path d="M3.964 10.71A5.41 5.41 0 0 1 3.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.042l3.007-2.332z" fill="#FBBC05"/>
+              <path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.958L3.964 7.29C4.672 5.163 6.656 3.58 9 3.58z" fill="#EA4335"/>
+            </svg>
+            Google
+          </button>
+          <button class="social-auth__btn" aria-label="Continue with Apple">
+            <i class="fa-brands fa-apple social-auth__icon" aria-hidden="true"></i>
+            Apple
+          </button>
+        </div>
+
+        <p class="auth-card__footer-text">
+          Already have an account?
+          <a href="/login.html" class="link link--bold">Log in</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- Right: feature highlights -->
+    <div class="auth-trust-panel" aria-hidden="true">
+      <div class="auth-trust-panel__inner">
+        <h2 class="auth-trust-panel__heading">Why SwiftSend?</h2>
+
+        <div class="auth-feature-list">
+          <div class="auth-feature">
+            <div class="auth-feature__icon">
+              <i class="fa-solid fa-scale-balanced"></i>
+            </div>
+            <div>
+              <div class="auth-feature__title">Real exchange rates</div>
+              <div class="auth-feature__desc">We use the mid-market rate, not the bank rate. You keep more of your money.</div>
+            </div>
+          </div>
+          <div class="auth-feature">
+            <div class="auth-feature__icon">
+              <i class="fa-solid fa-bolt"></i>
+            </div>
+            <div>
+              <div class="auth-feature__title">Fast delivery</div>
+              <div class="auth-feature__desc">95% of transfers arrive the same day. Many routes settle in minutes.</div>
+            </div>
+          </div>
+          <div class="auth-feature">
+            <div class="auth-feature__icon">
+              <i class="fa-solid fa-eye"></i>
+            </div>
+            <div>
+              <div class="auth-feature__title">Full transparency</div>
+              <div class="auth-feature__desc">See every fee before you commit. No hidden charges, ever.</div>
+            </div>
+          </div>
+          <div class="auth-feature">
+            <div class="auth-feature__icon">
+              <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <div>
+              <div class="auth-feature__title">Secure &amp; regulated</div>
+              <div class="auth-feature__desc">Bank-grade encryption and segregated client funds keep your money safe.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="auth-trust-panel__stats">
+          <div class="auth-trust-panel__stat">
+            <div class="auth-trust-panel__stat-value">Free</div>
+            <div class="auth-trust-panel__stat-label">To sign up</div>
+          </div>
+          <div class="auth-trust-panel__stat">
+            <div class="auth-trust-panel__stat-value">2 min</div>
+            <div class="auth-trust-panel__stat-label">To open account</div>
+          </div>
+          <div class="auth-trust-panel__stat">
+            <div class="auth-trust-panel__stat-value">0.7%</div>
+            <div class="auth-trust-panel__stat-label">Starting fee</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <div class="footer__brand">SwiftSend</div>
+        <p class="footer__tagline">Fast, transparent international money transfers. No hidden fees. Real exchange rates.</p>
+      </div>
+      <div>
+        <div class="footer__heading">Product</div>
+        <div class="footer__links">
+          <a href="/send.html" class="footer__link">Send money</a>
+          <a href="/pricing.html" class="footer__link">Pricing</a>
+          <a href="/track.html" class="footer__link">Track transfer</a>
+          <a href="/dashboard.html" class="footer__link">Dashboard</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer__heading">Company</div>
+        <div class="footer__links">
+          <a href="#" class="footer__link">About</a>
+          <a href="#" class="footer__link">Blog</a>
+          <a href="#" class="footer__link">Careers</a>
+          <a href="#" class="footer__link">Press</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer__heading">Legal</div>
+        <div class="footer__links">
+          <a href="#" class="footer__link">Privacy</a>
+          <a href="#" class="footer__link">Terms</a>
+          <a href="#" class="footer__link">Cookies</a>
+          <a href="#" class="footer__link">Licenses</a>
+        </div>
+      </div>
+    </div>
+    <p class="footer__disclaimer">SwiftSend is a demonstration project. It is not a regulated financial institution and does not process real money transfers. Exchange rates are provided by Frankfurter API (European Central Bank data).</p>
+    <div class="footer__bottom">
+      <span>© 2025 SwiftSend. All rights reserved.</span>
+      <span>Built with FastAPI · PostgreSQL · Redis · Rust</span>
+    </div>
+  </div>
+</footer>
+
+<script type="module">
+  import { initNav } from './js/main.js';
+  import { initRegister } from './js/auth.js';
+  document.addEventListener('DOMContentLoaded', () => { initNav(); initRegister(); });
+</script>
+</body>
+</html>
